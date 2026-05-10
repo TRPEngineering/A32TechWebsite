@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A32F Tech — Study and reference aid for A320 family engineers</title>
+<meta name="description" content="Your digital black book. A fast, offline study and reference companion for licensed aircraft engineers on the A320 family.">
+<meta name="theme-color" content="#0a0a0a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #111111;
+  --bg-card: #141414;
+  --border: #1a2218;
+  --border-strong: #243024;
+  --text: #d8e0d6;
+  --text-dim: #8a978a;
+  --text-faint: #5a655a;
+  --accent: #00cc00;
+  --accent-dim: #009900;
+  --accent-glow: rgba(0, 204, 0, 0.4);
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --good: #6dbb8a;
+  --warn: #e8c468;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* FIX: scroll-padding-top offsets anchor links so they aren't hidden under the fixed nav */
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #5fff5f; }
+
+/* Page-switch system: each page is a section, body class controls visibility */
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 9rem 2rem 6rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+.hero-meta span::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--text-faint);
+  border-radius: 50%;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  max-width: 14ch;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  text-shadow: 0 0 30px var(--accent-glow);
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--text-dim);
+  max-width: 48ch;
+  margin-bottom: 3rem;
+  line-height: 1.55;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-primary:hover { background: #5fff5f; transform: translateY(-1px); }
+
+.btn-ghost {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Hero schematic */
+.hero-schematic {
+  position: absolute;
+  right: 3rem; top: 50%;
+  transform: translateY(-50%);
+  width: 32vw;
+  max-width: 480px;
+  aspect-ratio: 1;
+  opacity: 0.85;
+  pointer-events: none;
+}
+@media (max-width: 1024px) { .hero-schematic { display: none; } }
+
+.hero-schematic svg { width: 100%; height: 100%; display: block; }
+.hero-schematic .fan-rotor {
+  transform-origin: 300px 300px;
+  animation: fan-rotate 60s linear infinite;
+  will-change: transform;
+}
+
+@keyframes fan-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-schematic .fan-rotor, .nav-rotor { animation: none; }
+}
+
+/* Decorative grid */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(36, 48, 36, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 48, 36, 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+main { position: relative; z-index: 1; }
+
+/* ===== SECTIONS ===== */
+section.block {
+  padding: 5rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+  max-width: 24ch;
+}
+
+/* Disclaimer block — high-vis, like an aviation NOTAM */
+.notam {
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--warn);
+  background: var(--bg-elev);
+  padding: 1.75rem 2rem;
+  margin: 3rem 0;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.notam::before {
+  content: 'ADVISORY';
+  position: absolute;
+  top: -10px; left: 1.5rem;
+  background: var(--bg);
+  padding: 0 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--warn);
+}
+
+.notam p { color: var(--text-dim); line-height: 1.6; }
+.notam strong { color: var(--text); }
+
+/* Feature grid */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 3rem;
+}
+
+.feature {
+  background: var(--bg);
+  padding: 2rem 1.75rem;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.feature:hover { 
+  background: var(--bg-card);
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 40px -10px rgba(0,0,0,0.7);
+}
+
+.feature-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.feature p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+/* Specs strip */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 4rem 0;
+}
+
+.spec {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border);
+  text-align: left;
+}
+.spec:last-child { border-right: none; }
+
+.spec-value {
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--accent-dim);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+.spec-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Built-by block */
+.builder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin: 5rem 0;
+}
+@media (max-width: 768px) { .builder { grid-template-columns: 1fr; gap: 2rem; } }
+
+.builder-text p {
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.builder-text p:first-child::first-letter {
+  font-family: var(--display);
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.85;
+  margin: 0.1em 0.1em 0 0;
+  color: var(--accent-dim);
+  font-weight: 500;
+}
+
+.callsign {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  margin-top: 2rem;
+}
+
+/* ===== LEGAL PAGES ===== */
+.legal-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
+}
+
+.legal-page h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
+  max-width: none;
+}
+
+.legal-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-page h2 {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 500;
+}
+
+.legal-page h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--text);
+  font-weight: 600;
+  font-family: var(--body);
+}
+
+.legal-page p, .legal-page li {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.legal-page ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.legal-page strong { color: var(--text); }
+.legal-page a { color: var(--accent); }
+
+.legal-toc {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.legal-toc-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.legal-toc ol {
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.legal-toc a { color: var(--text); }
+.legal-toc a:hover { color: var(--accent); }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem 2rem;
+  margin-top: 6rem;
+  background: var(--bg-elev);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+.footer-brand .logo { font-size: 1rem; margin-bottom: 1rem; }
+.footer-brand p {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  max-width: 32ch;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; font-size: 0.9rem; }
+.footer-col a { color: var(--text-dim); cursor: pointer; }
+.footer-col a:hover { color: var(--accent); }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 0.8s ease-out forwards;
+}
+.reveal-1 { animation-delay: 0.05s; }
+.reveal-2 { animation-delay: 0.15s; }
+.reveal-3 { animation-delay: 0.25s; }
+.reveal-4 { animation-delay: 0.35s; }
+.reveal-5 { animation-delay: 0.45s; }
+
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="logo" onclick="showPage('home')" role="button" tabindex="0" aria-label="Go to Home">
+    <svg viewBox="-500 -500 1000 1000" style="width: 30px; height: 30px; animation: fan-rotate 20s linear infinite; will-change: transform;">
+      <defs>
+        <linearGradient id="nav-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00CC00" />
+          <stop offset="15%" stop-color="#006600" />
+          <stop offset="100%" stop-color="#000000" />
+        </linearGradient>
+        <path id="nav-studio-blade" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" fill="url(#nav-blade-grad)" stroke="#00CC00" stroke-width="5" stroke-linejoin="round"/>
+      </defs>
+      <circle r="8" fill="#00cc00" />
+      <path d="M 0,0 C 14,0 27,-14 27,-27 C 27,-45 0,-54 -18,-45 C -40,-31 -54,0 -45,27 C -31,63 9,76 40,63 C 72,50 81,0 67,-31" fill="none" stroke="#00CC00" stroke-width="11" stroke-linecap="round" />
+      <circle r="85" fill="none" stroke="#00CC00" stroke-width="22"/>
+      <circle r="145" fill="none" stroke="#00CC00" stroke-width="22"/>
+      <g>
+        <use href="#nav-studio-blade" transform="rotate(0)"/><use href="#nav-studio-blade" transform="rotate(20)"/><use href="#nav-studio-blade" transform="rotate(40)"/><use href="#nav-studio-blade" transform="rotate(60)"/><use href="#nav-studio-blade" transform="rotate(80)"/><use href="#nav-studio-blade" transform="rotate(100)"/><use href="#nav-studio-blade" transform="rotate(120)"/><use href="#nav-studio-blade" transform="rotate(140)"/><use href="#nav-studio-blade" transform="rotate(160)"/><use href="#nav-studio-blade" transform="rotate(180)"/><use href="#nav-studio-blade" transform="rotate(200)"/><use href="#nav-studio-blade" transform="rotate(220)"/><use href="#nav-studio-blade" transform="rotate(240)"/><use href="#nav-studio-blade" transform="rotate(260)"/><use href="#nav-studio-blade" transform="rotate(280)"/><use href="#nav-studio-blade" transform="rotate(300)"/><use href="#nav-studio-blade" transform="rotate(320)"/><use href="#nav-studio-blade" transform="rotate(340)"/>
+      </g>
+      <circle r="460" fill="none" stroke="#00cc00" stroke-width="14"/>
+      <circle r="485" fill="none" stroke="#00cc00" stroke-width="24"/>
+    </svg>
+    A32F&nbsp;TECH
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home" onclick="showPage('home'); return false;" id="nav-home">Home</a></li>
+    <li><a href="#privacy" onclick="showPage('privacy'); return false;" id="nav-privacy">Privacy</a></li>
+    <li><a href="#terms" onclick="showPage('terms'); return false;" id="nav-terms">Terms</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<div id="home" class="page active">
+
+<section class="hero">
+  <div class="hero-meta reveal reveal-1">
+    <span>VERSION 1.0</span>
+    <span>ANDROID</span>
+    <span>OFFLINE</span>
+    <span>EASA PART-66</span>
+  </div>
+
+  <h1 class="reveal reveal-2">Your digital <em>black book.</em></h1>
+
+  <p class="lede reveal reveal-3">
+    A fast, offline study and reference companion for licensed engineers and
+    technicians on the Airbus A320, A321, and A321 XLR. Every nugget you'd otherwise
+    spend a shift hunting for, in one place.
+  </p>
+
+  <div class="cta-row reveal reveal-4">
+    <a class="btn btn-primary" href="#" id="play-link">
+      Get on Google Play →
+    </a>
+    <a class="btn btn-ghost" href="#features">What's inside</a>
+  </div>
+
+  <div class="hero-schematic reveal reveal-5">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hero-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00CC00" stop-opacity="0.85"/>
+          <stop offset="15%" stop-color="#006600" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.85"/>
+        </linearGradient>
+        <path id="hero-studio-blade" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" />
+      </defs>
+
+      <g stroke="#1a2218" stroke-width="0.5" fill="none">
+        <line x1="0" y1="300" x2="600" y2="300" stroke-dasharray="3 6"/>
+        <line x1="300" y1="0" x2="300" y2="600" stroke-dasharray="3 6"/>
+        <circle cx="300" cy="300" r="280" stroke-dasharray="2 8"/>
+      </g>
+
+      <g transform="translate(300,300) scale(0.48)">
+        <circle r="460" fill="none" stroke="#00cc00" stroke-width="14" stroke-opacity="0.3"/>
+        <circle r="485" fill="none" stroke="#00cc00" stroke-width="24" stroke-opacity="0.5"/>
+        <path d="M -415,220 A 470 470 0 0 0 415,220" fill="none" stroke="#00CC00" stroke-width="20" stroke-linecap="round" stroke-opacity="0.6"/>
+      </g>
+
+      <g class="fan-rotor">
+        <g transform="translate(300,300) scale(0.48)" fill="url(#hero-blade-grad)" stroke="#00cc00" stroke-width="3" stroke-linejoin="round">
+          <use href="#hero-studio-blade" transform="rotate(0)"/>
+          <use href="#hero-studio-blade" transform="rotate(20)"/>
+          <use href="#hero-studio-blade" transform="rotate(40)"/>
+          <use href="#hero-studio-blade" transform="rotate(60)"/>
+          <use href="#hero-studio-blade" transform="rotate(80)"/>
+          <use href="#hero-studio-blade" transform="rotate(100)"/>
+          <use href="#hero-studio-blade" transform="rotate(120)"/>
+          <use href="#hero-studio-blade" transform="rotate(140)"/>
+          <use href="#hero-studio-blade" transform="rotate(160)"/>
+          <use href="#hero-studio-blade" transform="rotate(180)"/>
+          <use href="#hero-studio-blade" transform="rotate(200)"/>
+          <use href="#hero-studio-blade" transform="rotate(220)"/>
+          <use href="#hero-studio-blade" transform="rotate(240)"/>
+          <use href="#hero-studio-blade" transform="rotate(260)"/>
+          <use href="#hero-studio-blade" transform="rotate(280)"/>
+          <use href="#hero-studio-blade" transform="rotate(300)"/>
+          <use href="#hero-studio-blade" transform="rotate(320)"/>
+          <use href="#hero-studio-blade" transform="rotate(340)"/>
+        </g>
+
+        <g transform="translate(300,300) scale(0.48)">
+          <circle r="145" fill="#0a0a0a" stroke="none" />
+          
+          <circle r="8" fill="#00cc00" />
+          <path d="M 0,0 C 14,0 27,-14 27,-27 C 27,-45 0,-54 -18,-45 C -40,-31 -54,0 -45,27 C -31,63 9,76 40,63 C 72,50 81,0 67,-31" fill="none" stroke="#00cc00" stroke-width="11" stroke-linecap="round" />
+          <circle r="85" fill="none" stroke="#00cc00" stroke-width="22" stroke-opacity="0.8"/>
+          <circle r="145" fill="none" stroke="#00cc00" stroke-width="22" stroke-opacity="0.8"/>
+        </g>
+      </g>
+
+      <g font-family="JetBrains Mono, monospace" font-size="9" fill="#5a655a">
+        <line x1="380" y1="100" x2="430" y2="60" stroke="#5a655a" stroke-width="0.5"/>
+        <line x1="430" y1="60" x2="510" y2="60" stroke="#5a655a" stroke-width="0.5"/>
+        <text x="436" y="54">18 BLADES</text>
+        <text x="436" y="68" fill="#3a423a">LEAP-1A</text>
+        
+        <line x1="533" y1="300" x2="555" y2="300" stroke="#5a655a" stroke-width="0.5"/>
+        <text x="448" y="297">INLET LIP</text>
+        
+        <line x1="250" y1="350" x2="180" y2="430" stroke="#5a655a" stroke-width="0.5"/>
+        <text x="80" y="445">SPINNER · ROT R/H</text>
+        
+        <text x="40" y="50" font-size="8">ATA 71-00</text>
+        <text x="40" y="64" font-size="8" fill="#3a423a">POWER PLANT</text>
+        <text x="445" y="540" font-size="8" fill="#3a423a">VIEW LOOKING AFT</text>
+      </g>
+
+      <g stroke="#243024" stroke-width="1">
+        <line x1="20" y1="20" x2="40" y2="20"/><line x1="20" y1="20" x2="20" y2="40"/>
+        <line x1="580" y1="20" x2="560" y2="20"/><line x1="580" y1="20" x2="580" y2="40"/>
+        <line x1="20" y1="580" x2="40" y2="580"/><line x1="20" y1="580" x2="20" y2="560"/>
+        <line x1="580" y1="580" x2="560" y2="580"/><line x1="580" y1="580" x2="580" y2="560"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="block">
+  <div class="notam scroll-reveal">
+    <p><strong>Study and reference use only.</strong> A32F Tech is not approved
+    maintenance data. Every licensed engineer is trained and required to use only
+    approved data — AMM, MEL, MMEL, CDL, SRM, TSM, and company procedures — for
+    aircraft work. This app does not change that, and is not held out as a substitute
+    for it. Use it for revision, training, and as a reference companion between tasks.</p>
+  </div>
+</section>
+
+<section class="block" id="features">
+  <div class="section-label">Modules</div>
+  <h2>Ten things you reach for during type-rating revision and refresher prep.</h2>
+
+  <div class="features">
+    <div class="feature scroll-reveal">
+      <div class="feature-num">01 / ATA</div>
+      <h3>Procedures</h3>
+      <p>Step-by-step references with ATA chapter numbers. Tappable panel and
+      circuit-breaker callouts route you straight to the relevant diagram.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">02 / DISPATCH</div>
+      <h3>MEL Calculator</h3>
+      <p>Cat A, B, C, and D dispatch time-limit calculator. Returns expiry date
+      and time in UTC from day of discovery.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">03 / ELEC</div>
+      <h3>CB Locations</h3>
+      <p>Lookup by FIN, panel, or description. Tappable panel diagrams show
+      physical position on the aircraft.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">04 / EXTERIOR</div>
+      <h3>Antenna &amp; Lighting</h3>
+      <p>Interactive aircraft diagrams covering every antenna, probe, sensor, and
+      external light. Filterable by variant.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">05 / STRUCT</div>
+      <h3>Panel Fastener Limits</h3>
+      <p>Missing-fastener allowances per panel with AMM criteria, corrective actions,
+      and browseable belly panel diagrams.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">06 / DISPATCH</div>
+      <h3>CDL Items</h3>
+      <p>Configuration Deviation List dispatch reference for missing external parts.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">07 / FLUIDS</div>
+      <h3>Leakage Rates</h3>
+      <p>Acceptable fluid leakage limits by system and severity classification.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">08 / GLOSSARY</div>
+      <h3>Acronyms</h3>
+      <p>Aviation and Airbus-specific acronym definitions, searchable.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">09 / TOOLS</div>
+      <h3>Converters</h3>
+      <p>Torque, temperature, pressure, weight, and fuel uplift calculators.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">10 / SYS</div>
+      <h3>Schematics &amp; Structures</h3>
+      <p>Reference diagrams for systems and structural zones across A320, A321, and A321 XLR.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="specs scroll-reveal">
+    <div class="spec">
+      <span class="spec-value">0</span>
+      <span class="spec-label">Accounts required</span>
+    </div>
+    <div class="spec">
+      <span class="spec-value">0</span>
+      <span class="spec-label">Trackers / analytics</span>
+    </div>
+    <div class="spec">
+      <span class="spec-value">100%</span>
+      <span class="spec-label">Offline capable</span>
+    </div>
+    <div class="spec">
+      <span class="spec-value">3</span>
+      <span class="spec-label">Variants supported</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="builder scroll-reveal">
+    <div class="builder-text">
+      <div class="section-label">Built by</div>
+      <h2 style="margin-bottom: 1.75rem;">An engineer, not a software house.</h2>
+      <p>Every engineer carries some version of this on their phone — a notebook,
+      a folder of PDFs, a clutch of bookmarks, a battered photocopy. A32F Tech is
+      the one I wish I'd had when I was studying for type rating exams, and the
+      one I built because I got tired of not having it.</p>
+      <p>For aircraft work, the AMM is the answer. For everything else — revision,
+      refresh, the question that comes up at home, the acronym you can't place,
+      the panel you want to picture before tomorrow — this is for that.</p>
+      <div class="callsign">— Built between shifts. —</div>
+    </div>
+    <div>
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px;">
+        <rect x="40" y="60" width="320" height="280" rx="6"
+              fill="#0f0f0f" stroke="#243024" stroke-width="1.5"/>
+
+        <rect x="48" y="68" width="304" height="264" rx="4"
+              fill="none" stroke="#1a2218" stroke-width="0.5"/>
+
+        <g fill="#1a2218" stroke="#243024" stroke-width="0.5">
+          <circle cx="56" cy="76" r="3"/>
+          <circle cx="344" cy="76" r="3"/>
+          <circle cx="56" cy="324" r="3"/>
+          <circle cx="344" cy="324" r="3"/>
+        </g>
+
+        <line x1="60" y1="100" x2="340" y2="100" stroke="#243024" stroke-width="0.5"/>
+        <text x="200" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace"
+              font-size="10" fill="#5a655a" letter-spacing="3">DATA PLATE</text>
+
+        <g font-family="JetBrains Mono, monospace" font-size="10">
+          <text x="60" y="128" fill="#5a655a" letter-spacing="1">PUBLISHER</text>
+          <text x="340" y="128" text-anchor="end" fill="#d8e0d6">TP Engineering Tech</text>
+          <line x1="60" y1="138" x2="340" y2="138" stroke="#1a2218" stroke-width="0.5"/>
+
+          <text x="60" y="160" fill="#5a655a" letter-spacing="1">ORIGIN</text>
+          <text x="340" y="160" text-anchor="end" fill="#d8e0d6">IRELAND</text>
+          <line x1="60" y1="170" x2="340" y2="170" stroke="#1a2218" stroke-width="0.5"/>
+
+          <text x="60" y="192" fill="#5a655a" letter-spacing="1">TYPE</text>
+          <text x="340" y="192" text-anchor="end" fill="#d8e0d6">REFERENCE COMPANION</text>
+          <line x1="60" y1="202" x2="340" y2="202" stroke="#1a2218" stroke-width="0.5"/>
+
+          <text x="60" y="224" fill="#5a655a" letter-spacing="1">PLATFORM</text>
+          <text x="340" y="224" text-anchor="end" fill="#d8e0d6">A320 · A321 · XLR</text>
+          <line x1="60" y1="234" x2="340" y2="234" stroke="#1a2218" stroke-width="0.5"/>
+
+          <text x="60" y="256" fill="#5a655a" letter-spacing="1">EST</text>
+          <text x="340" y="256" text-anchor="end" fill="#d8e0d6">2026</text>
+          <line x1="60" y1="266" x2="340" y2="266" stroke="#1a2218" stroke-width="0.5"/>
+
+          <text x="60" y="288" fill="#5a655a" letter-spacing="1">STATUS</text>
+          <text x="335" y="288" text-anchor="end" fill="#00cc00">OPERATIONAL</text>
+          <circle cx="345" cy="285" r="3" fill="#00cc00">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <text x="200" y="320" text-anchor="middle" font-family="JetBrains Mono, monospace"
+              font-size="7" fill="#3a423a" letter-spacing="2">NOT AFFILIATED WITH AIRBUS</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+</div>
+<div id="privacy" class="page legal-page">
+
+<h1>Privacy Policy</h1>
+<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED MAY 2026</div>
+
+<div class="legal-toc">
+  <div class="legal-toc-label">Contents</div>
+  <ol>
+    <li><a href="#p1">Who we are</a></li>
+    <li><a href="#p2">Summary</a></li>
+    <li><a href="#p3">What we collect, why, and on what legal basis</a></li>
+    <li><a href="#p4">What we do not do</a></li>
+    <li><a href="#p5">Children</a></li>
+    <li><a href="#p6">International transfers</a></li>
+    <li><a href="#p7">Your rights</a></li>
+    <li><a href="#p8">Security</a></li>
+    <li><a href="#p9">Changes to this policy</a></li>
+    <li><a href="#p10">Contact</a></li>
+  </ol>
+</div>
+
+<h2 id="p1">1. Who we are</h2>
+<p>A32F Tech (the "App") is published by <strong>TP Engineering Tech</strong>, a private
+company limited by shares incorporated in Ireland under company registration number
+TPEngineeringTech, with its registered office in Ireland ("we", "us", "our").</p>
+<p>For the purposes of the EU General Data Protection Regulation (Regulation (EU)
+2016/679, "GDPR") and the Irish Data Protection Act 2018, we are the
+<strong>data controller</strong> for any personal data processed in connection with the App.</p>
+<p>You can contact us about this policy at <a href="mailto:contact@tpengineering.net">contact@tpengineering.net</a>.</p>
+
+<h2 id="p2">2. Summary</h2>
+<p>We have built A32F Tech to do its job without collecting personal data. You do not
+need an account. The App works offline. We do not run analytics, advertising, tracking,
+or third-party telemetry inside the App.</p>
+<p>The only personal data that exists in connection with the App is:</p>
+<ul>
+  <li><strong>Subscription billing data</strong>, processed by Google (Google Play
+  Billing) and by our subscription management provider, RevenueCat. We do not see
+  your payment details.</li>
+  <li><strong>Support correspondence</strong>, if you choose to email us.</li>
+</ul>
+<p>The sections below explain this in detail and set out your rights under GDPR.</p>
+
+<h2 id="p3">3. What we collect, why, and on what legal basis</h2>
+
+<h3>3.1 Information processed inside the App</h3>
+<p><strong>None.</strong> The App does not collect, store, or transmit any personal
+data from your device. Reference content is bundled with the App and read locally.
+The App does not contact our servers, and we do not operate analytics, crash-reporting,
+or advertising SDKs inside it.</p>
+<p>Any preferences you set (for example, dark mode, default aircraft variant) are
+stored only on your device and are never transmitted.</p>
+
+<h3>3.2 Subscription and purchase data</h3>
+<p>If you start a free trial or subscribe to a paid plan, the transaction is handled
+by <strong>Google Play Billing</strong>. Google processes your payment information
+under its own privacy policy. We never receive your payment card details.</p>
+<p>To manage your subscription entitlement, we use <strong>RevenueCat, Inc.</strong>
+as a sub-processor. RevenueCat receives an anonymous app-generated user identifier,
+purchase receipt data from Google Play, and basic device metadata (platform, app
+version, country code, language). RevenueCat does not receive your name, email, or
+payment details. Their privacy policy is at
+<a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>.</p>
+<p><strong>Legal basis:</strong> performance of a contract (Article 6(1)(b) GDPR).</p>
+<p><strong>Retention:</strong> purchase records are retained for as long as you have
+an active entitlement and for up to 7 years after the last transaction, to comply
+with Irish tax and accounting law (Section 886 Taxes Consolidation Act 1997).</p>
+
+<h3>3.3 Support correspondence</h3>
+<p>If you email <a href="mailto:contact@tpengineering.net">contact@tpengineering.net</a>, we will receive your
+email address and the contents of your message. We use this only to respond to you
+and to keep a record of the issue.</p>
+<p><strong>Legal basis:</strong> legitimate interest (Article 6(1)(f) GDPR).</p>
+<p><strong>Retention:</strong> support emails are retained for up to 24 months from
+the last message in the thread, then deleted.</p>
+
+<h3>3.4 Google Play Console diagnostics</h3>
+<p>Google Play itself collects certain technical data (crashes, ANRs, install counts,
+country, device model) and provides it to us in aggregated form through the Play
+Console. This is governed by Google's own privacy policy and we have no control over
+the collection.</p>
+
+<h2 id="p4">4. What we do not do</h2>
+<p>We do not:</p>
+<ul>
+  <li>Sell or rent personal data to anyone.</li>
+  <li>Run advertising or share data with ad networks.</li>
+  <li>Use third-party analytics inside the App.</li>
+  <li>Track your location.</li>
+  <li>Access your contacts, photos, microphone, or camera.</li>
+  <li>Profile users or make automated decisions producing legal effects.</li>
+  <li>Transfer data outside the EEA except where Google and RevenueCat (US-based)
+  process subscription data on our behalf, under standard contractual clauses and
+  applicable safeguards.</li>
+</ul>
+
+<h2 id="p5">5. Children</h2>
+<p>A32F Tech is a professional reference tool for licensed aircraft engineers. It is
+not directed at children and is rated for adults. We do not knowingly collect personal
+data from anyone under 18.</p>
+
+<h2 id="p6">6. International transfers</h2>
+<p>Where Google or RevenueCat process personal data outside the European Economic
+Area (typically in the United States), they do so under the European Commission's
+Standard Contractual Clauses and any additional safeguards required under the GDPR.
+You can request copies of the relevant safeguards from us at contact@tpengineering.net.</p>
+
+<h2 id="p7">7. Your rights</h2>
+<p>Under the GDPR you have the right to access, rectify, erase, restrict, or port
+your personal data; to object to processing based on legitimate interests; and to
+withdraw consent at any time, where processing is based on consent.</p>
+<p>To exercise any of these rights, email
+<a href="mailto:contact@tpengineering.net">contact@tpengineering.net</a>. We will respond within
+30 days.</p>
+<p>You also have the right to lodge a complaint with the Irish Data Protection
+Commission (<a href="https://www.dataprotection.ie">dataprotection.ie</a>) or with
+the supervisory authority in your country of residence.</p>
+
+<h2 id="p8">8. Security</h2>
+<p>We use commercially reasonable technical and organisational measures to protect
+personal data, including encryption in transit for any data exchanged with Google
+and RevenueCat, and access controls on our internal systems. The volume and
+sensitivity of data we hold is deliberately minimal.</p>
+
+<h2 id="p9">9. Changes to this policy</h2>
+<p>We may update this policy from time to time. Material changes will be notified
+through the App and on our website at
+<a href="https://tpengineering.net/#privacy">tpengineering.net/#privacy</a>. The "Last updated"
+date at the top shows when it was last changed.</p>
+
+<h2 id="p10">10. Contact</h2>
+<p><strong>Data controller:</strong> TP Engineering Tech<br>
+<strong>Registered office:</strong> Ireland<br>
+<strong>Company number:</strong> TPEngineeringTech<br>
+<strong>Email:</strong> <a href="mailto:contact@tpengineering.net">contact@tpengineering.net</a></p>
+
+<p style="margin-top: 3rem; font-size: 0.85rem; color: var(--text-faint);">
+This policy is governed by Irish law. Any disputes are subject to the exclusive
+jurisdiction of the Irish courts.</p>
+
+</div>
+<div id="terms" class="page legal-page">
+
+<h1>Terms of Use</h1>
+<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED MAY 2026</div>
+
+<div class="legal-toc">
+  <div class="legal-toc-label">Contents</div>
+  <ol>
+    <li><a href="#t1">Agreement</a></li>
+    <li><a href="#t2">The App — what it is and what it is not</a></li>
+    <li><a href="#t3">Eligibility</a></li>
+    <li><a href="#t4">Licence</a></li>
+    <li><a href="#t5">Subscription, free trial, and billing</a></li>
+    <li><a href="#t6">Updates</a></li>
+    <li><a href="#t7">No warranty</a></li>
+    <li><a href="#t8">Limitation of liability</a></li>
+    <li><a href="#t9">Indemnity</a></li>
+    <li><a href="#t10">Termination</a></li>
+    <li><a href="#t11">Trademarks and third parties</a></li>
+    <li><a href="#t12">Governing law and jurisdiction</a></li>
+    <li><a href="#t13">Changes</a></li>
+    <li><a href="#t14">Contact</a></li>
+  </ol>
+</div>
+
+<h2 id="t1">1. Agreement</h2>
+<p>These Terms of Use ("Terms") form a legal agreement between you and
+<strong>TP Engineering Tech</strong>, a private company limited by shares incorporated
+in Ireland under company registration number TPEngineeringTech, with its registered office
+in Ireland ("we", "us", "our").</p>
+<p>By installing, opening, or using the A32F Tech mobile application (the "App"), you
+agree to these Terms. If you do not agree, do not use the App. These Terms incorporate
+our <a onclick="showPage('privacy')">Privacy Policy</a> and the Google Play Terms of
+Service.</p>
+
+<h2 id="t2">2. The App — its purpose and its limits</h2>
+<p>A32F Tech is a study, revision, and quick-reference aid for licensed aircraft
+engineers and technicians. It is intended for off-aircraft use — for type rating
+revision, training, exam preparation, and informal reference between tasks.</p>
+<p><strong>A32F Tech is not approved maintenance data.</strong> It does not replace,
+and is not intended to replace: the AMM, MMEL, MEL, CDL, SRM, TSM, or any other
+documentation issued by Airbus, your operator, or your civil aviation authority;
+or your company's procedures, approvals, and authorisations.</p>
+<p>You acknowledge that the use of approved maintenance data — and not third-party
+apps such as this one — is a fundamental requirement of every licensed aircraft
+engineer's training and licence conditions. Using A32F Tech as the source of
+information for any maintenance action, dispatch decision, defect deferral, or
+release to service would be contrary to that training and contrary to the conditions
+of an EASA Part-66 (or equivalent) licence.</p>
+<p>By using the App you confirm that you understand this and that you will not use
+the App for any such purpose.</p>
+
+<h2 id="t3">3. Eligibility</h2>
+<p>You may use the App if you are at least 18 years of age, and a licensed aircraft
+engineer, technician, apprentice, aviation student, or another person with a
+legitimate professional or training interest in A320 family maintenance.</p>
+
+<h2 id="t4">4. Licence</h2>
+<p>Subject to these Terms, we grant you a personal, non-exclusive, non-transferable,
+revocable licence to install and use the App on devices you own or control, for your
+own internal reference and training purposes.</p>
+<p>You must not copy, redistribute, resell, or sublicense the App; reverse engineer,
+decompile, or disassemble it (except as permitted by mandatory law); remove notices;
+breach applicable law; or use automated means to extract data from the App.</p>
+
+<h2 id="t5">5. Subscription, free trial, and billing</h2>
+<p>The App is offered on a subscription basis with an introductory free trial.
+Duration, term, price, renewal cycle, and applicable taxes are shown in-app before
+you confirm purchase.</p>
+<p><strong>Free trial.</strong> If you do not cancel before the trial ends, the
+subscription will begin automatically.</p>
+<p><strong>Auto-renewal.</strong> Subscriptions renew automatically unless cancelled
+at least 24 hours before the end of the current period.</p>
+<p><strong>Cancellation.</strong> Cancel any time at
+<a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>.
+Access continues until the end of the current period.</p>
+<p><strong>Refunds.</strong> Processed by Google under Google Play's refund policy.</p>
+<p><strong>EU/EEA consumers — withdrawal right.</strong> By starting a paid
+subscription within the 14-day statutory withdrawal period, you expressly request
+that performance begins immediately and acknowledge you lose the right of withdrawal
+once the service has been fully provided.</p>
+
+<h2 id="t6">6. Updates</h2>
+<p>We may release updates through Google Play. Updates may add, modify, or remove
+features. We are not obliged to maintain any particular feature or compatibility with
+any particular device.</p>
+
+<h2 id="t7">7. No warranty</h2>
+<p>To the maximum extent permitted by law, the App and its content are provided
+<strong>"as is" and "as available"</strong>, without warranty of any kind. We do
+not warrant accuracy, completeness, currency, uninterrupted operation, or fitness
+for a particular purpose. Nothing in these Terms excludes any non-excludable consumer
+rights you have under Irish or EU law.</p>
+
+<h2 id="t8">8. Limitation of liability</h2>
+<p>You acknowledge that (a) every licensed aircraft engineer is trained and required
+by their licence conditions to use only approved maintenance data when working on
+an aircraft; (b) A32F Tech is not approved maintenance data and is not held out as
+such; and (c) any maintenance action, dispatch decision, defect deferral, or release
+to service is the professional responsibility of the engineer who signs for it,
+performed on the basis of approved data, not on the basis of the App.</p>
+<p>To the maximum extent permitted by law, TP Engineering Tech is not liable for any
+maintenance action, dispatch decision, defect deferral, or release to service made
+— whether wholly or partly — in reliance on the App, nor for damage to aircraft,
+equipment, persons, or property arising from such reliance, nor for any indirect,
+incidental, special, consequential, or punitive damages.</p>
+<p>Our total aggregate liability is limited to the greater of (a) the amount you
+paid us in the 12 months preceding the event, or (b) €100. Nothing limits liability
+for death or personal injury caused by negligence, fraud, or any other liability
+that cannot be excluded under applicable law.</p>
+<p><strong>Professional responsibility.</strong> Nothing in the App alters your
+professional responsibilities under your licence, your operator's MOE/MOM, or
+applicable aviation regulations. Those responsibilities exist independently of the
+App and are unaffected by it.</p>
+
+<h2 id="t9">9. Indemnity</h2>
+<p>You agree to indemnify and hold harmless TP Engineering Tech, its directors,
+officers, and employees from claims, damages, losses, liabilities, costs, and
+expenses (including reasonable legal fees) arising out of your breach of these
+Terms, your misuse of the App, or any use of the App contrary to the conditions
+of your licence or contrary to your training, including any use of the App as a
+source of information for maintenance work that should have been performed by
+reference to approved data.</p>
+
+<h2 id="t10">10. Termination</h2>
+<p>You may stop using the App at any time by uninstalling it. We may terminate or
+suspend your access if you breach these Terms or if we discontinue the App.
+Disclaimers, limitation of liability, indemnity, and governing law survive
+termination.</p>
+
+<h2 id="t11">11. Trademarks and third parties</h2>
+<p>The App is independent. It is not produced by, endorsed by, or affiliated with
+Airbus SE, Airbus Operations, any airline, any maintenance organisation, or any
+civil aviation authority. "Airbus", "A320", "A321", and related marks are trademarks
+of Airbus SE. All trademarks are the property of their respective owners.</p>
+
+<h2 id="t12">12. Governing law and jurisdiction</h2>
+<p>These Terms are governed by the laws of Ireland. The courts of Ireland have
+exclusive jurisdiction, except that consumers resident in another EU/EEA member
+state may bring proceedings in the courts of their own country, where mandatory
+consumer protection law so provides.</p>
+
+<h2 id="t13">13. Changes</h2>
+<p>We may update these Terms from time to time. Material changes will be notified
+through the App or by an in-app prompt. Continued use after changes take effect
+constitutes acceptance.</p>
+
+<h2 id="t14">14. Contact</h2>
+<p><strong>TP Engineering Tech</strong><br>
+Ireland<br>
+Company number: TPEngineeringTech<br>
+Contact: <a href="mailto:contact@tpengineering.net">contact@tpengineering.net</a></p>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">A32F&nbsp;TECH</div>
+      <p>An independent reference companion for licensed engineers working on the
+      Airbus A320 family. Built in Ireland.</p>
+    </div>
+    <div class="footer-col">
+      <h4>App</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Overview</a></li>
+        <li><a href="#" id="play-link-footer">Google Play</a></li>
+        <li><a href="mailto:contact@tpengineering.net">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+        <li><a onclick="showPage('terms')">Terms of Use</a></li>
+        <li><a href="mailto:contact@tpengineering.net">Data Requests</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TP Engineering Tech · Registered in Ireland · Co. No. TPEngineeringTech</span>
+    <span>NOT AFFILIATED WITH AIRBUS · ALL TRADEMARKS BELONG TO THEIR OWNERS</span>
+  </div>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById(id);
+  if (page) page.classList.add('active');
+  
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const activeNav = document.getElementById('nav-' + id);
+  if (activeNav) activeNav.classList.add('active');
+  
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // basic URL hash for back-button friendliness
+  if (id === 'home') {
+    history.replaceState(null, '', window.location.pathname);
+  } else {
+    history.replaceState(null, '', '#' + id);
+  }
+}
+
+// honour direct links (e.g. /#privacy)
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash === 'privacy' || hash === 'terms') {
+    showPage(hash);
+  } else {
+    showPage('home'); // Ensure active state is correctly applied on load
+  }
+
+  // Add scroll reveal behavior
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+});
+</script>
+</body>
+</html>
