@@ -212,7 +212,16 @@ h1 em {
   opacity: 0.85;
   pointer-events: none;
 }
-@media (max-width: 1024px) { .hero-schematic { display: none; } }
+@media (max-width: 1024px) {
+  .hero-schematic {
+    position: static;
+    transform: none;
+    width: 60vw;
+    max-width: 280px;
+    margin: 3rem auto 0;
+    opacity: 0.75;
+  }
+}
 
 .hero-schematic svg { width: 100%; height: 100%; display: block; }
 .hero-schematic .fan-rotor {
