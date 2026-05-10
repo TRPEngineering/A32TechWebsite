@@ -117,7 +117,14 @@ nav {
   padding: 9rem 2rem 6rem;
   max-width: 1280px;
   margin: 0 auto;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 36vw;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
 }
 
 .hero-meta {
@@ -203,24 +210,13 @@ h1 em {
 
 /* Hero schematic */
 .hero-schematic {
-  position: absolute;
-  right: 3rem; top: 50%;
-  transform: translateY(-50%);
-  width: 32vw;
-  max-width: 480px;
+  width: 100%;
   aspect-ratio: 1;
   opacity: 0.85;
   pointer-events: none;
 }
 @media (max-width: 1024px) {
-  .hero-schematic {
-    position: static;
-    transform: none;
-    width: 60vw;
-    max-width: 280px;
-    margin: 3rem auto 0;
-    opacity: 0.75;
-  }
+  .hero-schematic { display: none; }
 }
 
 .hero-schematic svg { width: 100%; height: 100%; display: block; }
@@ -661,29 +657,31 @@ footer {
 <div id="home" class="page active">
 
 <section class="hero">
-  <div class="hero-meta reveal reveal-1">
-    <span>VERSION 1.0</span>
-    <span>ANDROID &amp; iOS</span>
-    <span>OFFLINE</span>
-    <span>EASA PART-66</span>
-  </div>
+  <div class="hero-content">
+    <div class="hero-meta reveal reveal-1">
+      <span>VERSION 1.0</span>
+      <span>ANDROID &amp; iOS</span>
+      <span>OFFLINE</span>
+      <span>EASA PART-66</span>
+    </div>
 
-  <h1 class="reveal reveal-2">Your digital <em>black book.</em></h1>
+    <h1 class="reveal reveal-2">Your digital <em>black book.</em></h1>
 
-  <p class="lede reveal reveal-3">
-    A fast, offline study and reference companion for licensed engineers and
-    technicians on the Airbus A320, A321, and A321 XLR. Every nugget you'd otherwise
-    spend a shift hunting for, in one place.
-  </p>
+    <p class="lede reveal reveal-3">
+      A fast, offline study and reference companion for licensed engineers and
+      technicians on the Airbus A320, A321, and A321 XLR. Every nugget you'd otherwise
+      spend a shift hunting for, in one place.
+    </p>
 
-  <div class="cta-row reveal reveal-4">
-    <a class="btn btn-primary btn-store" href="#" id="play-link" aria-disabled="true" tabindex="-1">
-      Google Play <span class="store-soon">COMING SOON</span>
-    </a>
-    <a class="btn btn-primary btn-store" href="#" id="appstore-link" aria-disabled="true" tabindex="-1">
-      App Store <span class="store-soon">COMING SOON</span>
-    </a>
-    <a class="btn btn-ghost" href="#features">What's inside</a>
+    <div class="cta-row reveal reveal-4">
+      <a class="btn btn-primary btn-store" href="#" id="play-link" aria-disabled="true" tabindex="-1">
+        Google Play <span class="store-soon">COMING SOON</span>
+      </a>
+      <a class="btn btn-primary btn-store" href="#" id="appstore-link" aria-disabled="true" tabindex="-1">
+        App Store <span class="store-soon">COMING SOON</span>
+      </a>
+      <a class="btn btn-ghost" href="#features">What's inside</a>
+    </div>
   </div>
 
   <div class="hero-schematic reveal reveal-5">
