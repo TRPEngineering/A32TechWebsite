@@ -6,6 +6,17 @@
 <title>A32F Tech — Study and reference aid for A320 family engineers</title>
 <meta name="description" content="Your digital black book. A fast, offline study and reference companion for licensed aircraft engineers on the A320 family.">
 <meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="A32F Tech — A320 family reference companion">
+<meta property="og:description" content="A fast, offline study and reference companion for licensed engineers and technicians on the Airbus A320 family.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tpengineering.net">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A32F Tech">
+<meta name="twitter:description" content="Offline reference companion for A320 family engineers.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -574,6 +585,32 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Coming-soon store buttons */
+.btn-store {
+  opacity: 0.55;
+  cursor: default;
+  position: relative;
+}
+.store-soon {
+  font-size: 0.6rem;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.1em 0.45em;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.cta-subtext {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+  width: 100%;
+}
 </style>
 </head>
 
@@ -617,7 +654,7 @@ footer {
 <section class="hero">
   <div class="hero-meta reveal reveal-1">
     <span>VERSION 1.0</span>
-    <span>ANDROID</span>
+    <span>ANDROID &amp; iOS</span>
     <span>OFFLINE</span>
     <span>EASA PART-66</span>
   </div>
@@ -631,8 +668,11 @@ footer {
   </p>
 
   <div class="cta-row reveal reveal-4">
-    <a class="btn btn-primary" href="#" id="play-link">
-      Get on Google Play →
+    <a class="btn btn-primary btn-store" href="#" id="play-link" aria-disabled="true" tabindex="-1">
+      Google Play <span class="store-soon">COMING SOON</span>
+    </a>
+    <a class="btn btn-primary btn-store" href="#" id="appstore-link" aria-disabled="true" tabindex="-1">
+      App Store <span class="store-soon">COMING SOON</span>
     </a>
     <a class="btn btn-ghost" href="#features">What's inside</a>
   </div>
@@ -1198,16 +1238,17 @@ Contact: <a href="mailto:contact@tpengineering.net">contact@tpengineering.net</a
     <div class="footer-col">
       <h4>App</h4>
       <ul>
-        <li><a onclick="showPage('home')">Overview</a></li>
-        <li><a href="#" id="play-link-footer">Google Play</a></li>
+        <li><a href="#home" onclick="showPage('home'); return false;">Overview</a></li>
+        <li><a href="#" id="play-link-footer" style="opacity:0.5; cursor:default;" aria-disabled="true">Google Play — soon</a></li>
+        <li><a href="#" id="appstore-link-footer" style="opacity:0.5; cursor:default;" aria-disabled="true">App Store — soon</a></li>
         <li><a href="mailto:contact@tpengineering.net">Support</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
-        <li><a onclick="showPage('terms')">Terms of Use</a></li>
+        <li><a href="#privacy" onclick="showPage('privacy'); return false;">Privacy Policy</a></li>
+        <li><a href="#terms" onclick="showPage('terms'); return false;">Terms of Use</a></li>
         <li><a href="mailto:contact@tpengineering.net">Data Requests</a></li>
       </ul>
     </div>
