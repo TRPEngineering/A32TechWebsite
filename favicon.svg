@@ -1,14 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-500 -500 1000 1000">
-  <rect x="-500" y="-500" width="1000" height="1000" fill="#0a0a0a"/>
+  <rect x="-500" y="-500" width="1000" height="1000" fill="#121212"/>
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#00CC00"/>
       <stop offset="15%" stop-color="#006600"/>
       <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
-    <path id="b" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z"/>
+    <path id="b" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" fill="url(#g)" stroke="#00CC00" stroke-width="5" stroke-linejoin="round"/>
+    <clipPath id="overlap-fix">
+      <rect x="-500" y="-500" width="550" height="500"/>
+    </clipPath>
   </defs>
-  <g fill="url(#g)" stroke="#00CC00" stroke-width="5" stroke-linejoin="round">
+  <circle r="10" fill="#D0D0D0"/>
+  <path d="M 0,0 C 14,0 27,-14 27,-27 C 27,-45 0,-54 -18,-45 C -40,-31 -54,0 -45,27 C -31,63 9,76 40,63 C 72,50 81,0 67,-31" fill="none" stroke="#D0D0D0" stroke-width="16" stroke-linecap="round"/>
+  <circle r="85" fill="none" stroke="#D0D0D0" stroke-width="12"/>
+  <circle r="145" fill="none" stroke="#00CC00" stroke-width="22"/>
+  <g>
     <use href="#b" transform="rotate(0)"/><use href="#b" transform="rotate(20)"/>
     <use href="#b" transform="rotate(40)"/><use href="#b" transform="rotate(60)"/>
     <use href="#b" transform="rotate(80)"/><use href="#b" transform="rotate(100)"/>
@@ -18,11 +25,9 @@
     <use href="#b" transform="rotate(240)"/><use href="#b" transform="rotate(260)"/>
     <use href="#b" transform="rotate(280)"/><use href="#b" transform="rotate(300)"/>
     <use href="#b" transform="rotate(320)"/><use href="#b" transform="rotate(340)"/>
+    <use href="#b" transform="rotate(0)" clip-path="url(#overlap-fix)"/>
   </g>
-  <circle r="8" fill="#00cc00"/>
-  <path d="M 0,0 C 14,0 27,-14 27,-27 C 27,-45 0,-54 -18,-45 C -40,-31 -54,0 -45,27 C -31,63 9,76 40,63 C 72,50 81,0 67,-31" fill="none" stroke="#00CC00" stroke-width="11" stroke-linecap="round"/>
-  <circle r="85" fill="none" stroke="#00CC00" stroke-width="22"/>
-  <circle r="145" fill="none" stroke="#00CC00" stroke-width="22"/>
-  <circle r="460" fill="none" stroke="#00cc00" stroke-width="14"/>
-  <circle r="485" fill="none" stroke="#00cc00" stroke-width="24"/>
+  <circle r="460" fill="none" stroke="#00CC00" stroke-width="14"/>
+  <circle r="485" fill="none" stroke="#00CC00" stroke-width="24"/>
+  <path d="M -415,220 A 470 470 0 0 0 415,220" fill="none" stroke="#00CC00" stroke-width="20" stroke-linecap="round"/>
 </svg>
