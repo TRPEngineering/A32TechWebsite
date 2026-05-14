@@ -664,7 +664,7 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <div class="hero-meta reveal reveal-1">
-      <span>VERSION 1.0</span>
+      <span>VERSION 1.3.4</span>
       <span>ANDROID &amp; iOS</span>
       <span>OFFLINE</span>
       <span>EASA PART-66</span>
@@ -791,7 +791,8 @@ footer {
       <p>Fully searchable reset procedures with integrated CB locations, reset
       timers, and tappable panel images so you can see exactly where the breaker
       is — without hunting through a diagram folder. No-go faults are clearly
-      flagged throughout.</p>
+      flagged throughout. Token-based search normalisation strips punctuation and
+      matches multi-word queries in any order — ATC 1 finds ATC(1).</p>
     </div>
 
     <div class="feature scroll-reveal">
@@ -806,9 +807,11 @@ footer {
     <div class="feature scroll-reveal">
       <div class="feature-num">03 / REFS</div>
       <h3>My References</h3>
-      <p>Your own personal reference list — quick sign-off notes, AMM callouts,
-      anything you reach for regularly. Works on the same backup and restore
-      principle as the Parts Catalogue so nothing gets lost.</p>
+      <p>A single fully editable reference library, pre-populated with standard
+      AMM maintenance task references and searchable from the first launch. Add
+      your own entries, edit existing ones, or delete what you don't need.
+      Filter by type: AMM, TSM, SRM, or GEN. Works on the same backup and
+      restore principle as the Parts Catalogue so nothing gets lost.</p>
     </div>
 
     <div class="feature scroll-reveal">
@@ -832,7 +835,9 @@ footer {
       <h3>CB Locations</h3>
       <p>Full list of circuit breakers with FIN and physical location. Each entry
       links to a tappable image of the relevant VU panel so you can see exactly
-      where to look.</p>
+      where to look. Variant badges show which aircraft types each CB applies to
+      — A318, A319, A320, A321 CEO, NEO, and XLR — sourced directly from the
+      data sheet.</p>
     </div>
 
     <div class="feature scroll-reveal">
@@ -881,14 +886,7 @@ footer {
     </div>
 
     <div class="feature scroll-reveal">
-      <div class="feature-num">13 / AMM</div>
-      <h3>General References</h3>
-      <p>A curated list of high-use AMM references — the chapters and tasks that
-      come up often enough to be worth having at your fingertips.</p>
-    </div>
-
-    <div class="feature scroll-reveal">
-      <div class="feature-num">14 / MCDU</div>
+      <div class="feature-num">13 / MCDU</div>
       <h3>Alpha Callups</h3>
       <p>A reference list of the parameters you can bring up on the MCDU, with
       the relevant information for each. Saves you remembering the exact sequence
@@ -896,10 +894,20 @@ footer {
     </div>
 
     <div class="feature scroll-reveal">
-      <div class="feature-num">15 / GLOSSARY</div>
+      <div class="feature-num">14 / GLOSSARY</div>
       <h3>Acronyms</h3>
       <p>Aviation and Airbus-specific acronym definitions, searchable. The one
       you can never remember when someone's watching.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">15 / REPORT</div>
+      <h3>Issue Reporting</h3>
+      <p>Spotted an error in a reset procedure or CB location? Submit an
+      anonymous report in a few taps. No account required, no personal data
+      collected — just the fault section, a description of the problem, and an
+      optional suggested correction. Reports go straight to us and are not
+      stored on your device after submission.</p>
     </div>
   </div>
 </section>
@@ -1050,11 +1058,13 @@ tracking, or third-party telemetry inside them.</p>
 <h2 id="p3">3. What we collect, why, and on what legal basis</h2>
 
 <h3>3.1 Information processed inside the Apps</h3>
-<p><strong>None.</strong> Neither App collects, stores, or transmits any personal
-data from your device. Reference content (A32F Tech) and the MEL date calculation
-logic (MEL Calculator) are bundled with each App and run locally. Neither App
-contacts our servers, and we do not operate analytics, crash-reporting, or
-advertising SDKs inside them.</p>
+<p><strong>No personal data.</strong> Neither App collects, stores, or transmits
+any personally identifiable information. Reference content (A32F Tech) and the
+MEL date calculation logic (MEL Calculator) are bundled with each App and run
+locally. We do not operate analytics, crash-reporting, or advertising SDKs inside
+them.</p>
+<p>A32F Tech does contact our servers for one purpose: voluntary anonymous issue
+reports (see 3.6). MEL Calculator never contacts our servers.</p>
 <p>Any preferences you set in A32F Tech (for example, dark mode, default aircraft
 variant) are stored only on your device and are never transmitted. MEL Calculator
 saves no preferences and no history.</p>
@@ -1101,6 +1111,22 @@ through the Play Console and App Store Connect respectively. This applies to bot
 Apps where they are distributed on the relevant store. This is governed by Google's
 and Apple's own privacy policies and we have no control over the collection.</p>
 
+<h3>3.6 Anonymous issue reports (A32F Tech only)</h3>
+<p>A32F Tech includes an optional issue reporting feature that allows you to flag
+errors in reset procedures or CB location data. Submission is voluntary and requires
+no account.</p>
+<p>The report contains: the section type (e.g. ECAM reset, CB location), a
+description of the affected entry, the type of problem, and optionally the aircraft
+type and a suggested correction. None of these fields contain or require personally
+identifiable information.</p>
+<p>Reports are transmitted to our API over HTTPS and are not retained on your
+device after submission. We do not link reports to individual users, devices, or
+any other data we hold. No new third-party SDKs or processors are involved.</p>
+<p><strong>Legal basis:</strong> legitimate interest (Article 6(1)(f) GDPR) —
+maintaining accurate reference data benefits all users of the App.</p>
+<p><strong>Retention:</strong> report data is retained for as long as it is needed
+to investigate and correct the reported issue, then deleted.</p>
+
 <h2 id="p4">4. What we do not do</h2>
 <p>We do not:</p>
 <ul>
@@ -1108,7 +1134,10 @@ and Apple's own privacy policies and we have no control over the collection.</p>
   <li>Run advertising or share data with ad networks.</li>
   <li>Use third-party analytics inside the Apps.</li>
   <li>Track your location.</li>
-  <li>Access your contacts, photos, microphone, or camera.</li>
+  <li>Access your contacts, microphone, or location.</li>
+  <li>Access your camera for any purpose other than capturing part photos within
+  the My Parts feature (A32F Tech only). Photos are stored locally on your device
+  and never transmitted.</li>
   <li>Profile users or make automated decisions producing legal effects.</li>
   <li>Transfer data outside the EEA except where Google and RevenueCat (US-based)
   process subscription data on our behalf, under standard contractual clauses and
