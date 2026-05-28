@@ -897,7 +897,15 @@ footer {
     </div>
 
     <div class="feature scroll-reveal">
-      <div class="feature-num">15 / REPORT</div>
+      <div class="feature-num">15 / PRO</div>
+      <h3>Data Sync</h3>
+      <p>Pro subscribers can pull the latest procedure and reference data directly
+      to the app without waiting for a store update. One-way and outbound only —
+      no data ever leaves your device. Can be disabled in settings at any time.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">16 / REPORT</div>
       <h3>Issue Reporting</h3>
       <p>Spotted an error in a reset procedure or CB location? Submit an
       anonymous report in a few taps. No account required, no personal data
@@ -1037,8 +1045,10 @@ office in Ireland ("we", "us", "our").</p>
 
 <h2 id="p2">2. Summary</h2>
 <p>We have built both Apps to do their job without collecting personal data. You do
-not need an account. The Apps work offline. We do not run analytics, advertising,
-tracking, or third-party telemetry inside them.</p>
+not need an account. Both Apps work fully offline. A32F Tech Pro subscribers can
+optionally enable a one-way data sync to receive procedure and reference updates —
+no user data is sent or returned by this request. We do not run analytics,
+advertising, tracking, or third-party telemetry inside either App.</p>
 <p>The only personal data that exists in connection with the Apps is:</p>
 <ul>
   <li><strong>Subscription billing data (A32F Tech only)</strong>, processed by
@@ -1059,11 +1069,19 @@ any personally identifiable information. Reference content (A32F Tech) and the
 MEL date calculation logic (MEL Calculator) are bundled with each App and run
 locally. We do not operate analytics, crash-reporting, or advertising SDKs inside
 them.</p>
-<p>A32F Tech does contact our servers for one purpose: voluntary anonymous issue
-reports (see 3.6). MEL Calculator never contacts our servers.</p>
-<p>Any preferences you set in A32F Tech (for example, dark mode, default aircraft
-variant) are stored only on your device and are never transmitted. MEL Calculator
-saves no preferences and no history.</p>
+<p>A32F Tech performs two types of network activity, both limited in scope:</p>
+<ul>
+  <li><strong>Data sync (Pro subscribers only).</strong> A one-way outbound fetch
+  from our backend to download updated procedure and reference data. No user data
+  is included in or returned by this request. This feature can be disabled at any
+  time in the app's settings.</li>
+  <li><strong>Anonymous issue reports (voluntary).</strong> See section 3.6.</li>
+</ul>
+<p>MEL Calculator never contacts our servers.</p>
+<p>All user-created data (My Parts, My Refs, bookmarks) is stored exclusively on
+your device using hardware-backed AES encryption and is never transmitted. Any
+preferences you set (dark mode, default aircraft variant) are stored locally only.
+MEL Calculator saves no preferences and no history.</p>
 
 <h3>3.2 Subscription data (A32F Tech)</h3>
 <p>If you start a free trial or subscribe to a paid plan, the transaction is handled
@@ -1167,6 +1185,10 @@ the supervisory authority in your country of residence.</p>
 personal data, including encryption in transit for any data exchanged with Google
 and RevenueCat, and access controls on our internal systems. The volume and
 sensitivity of data we hold is deliberately minimal.</p>
+<p>All user-created data stored on-device by A32F Tech (My Parts, My Refs,
+bookmarks) is protected using hardware-backed AES encryption provided by the
+device's operating system. The app does not handle or store payment information
+at any point — all billing is processed by Google Play Billing via RevenueCat.</p>
 
 <h2 id="p9">9. Changes to this policy</h2>
 <p>We may update this policy from time to time. Material changes will be notified
