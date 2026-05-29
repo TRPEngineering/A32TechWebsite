@@ -664,7 +664,8 @@ footer {
 <section class="hero">
   <div class="hero-content">
     <div class="hero-meta reveal reveal-1">
-      <span>ANDROID &amp; iOS</span>
+      <span>ANDROID</span>
+      <span>iOS COMING SOON</span>
       <span>OFFLINE</span>
       <span>EASA PART-66</span>
     </div>
@@ -1013,7 +1014,7 @@ footer {
 
 <p style="margin-bottom: 3rem; font-size: 0.95rem; color: var(--text-dim);">
 This policy covers the following apps published by TRP Engineering:
-<strong>A32F Tech</strong> (iOS and Android — subscription) and
+<strong>A32F Tech</strong> (Android — subscription; iOS coming soon) and
 <strong>MEL Calculator</strong> (Wear OS — one-time purchase). Where practices
 differ between the two, the relevant section says so.</p>
 
@@ -1069,12 +1070,15 @@ any personally identifiable information. Reference content (A32F Tech) and the
 MEL date calculation logic (MEL Calculator) are bundled with each App and run
 locally. We do not operate analytics, crash-reporting, or advertising SDKs inside
 them.</p>
-<p>A32F Tech performs two types of network activity, both limited in scope:</p>
+<p>A32F Tech performs three types of network activity, all limited in scope:</p>
 <ul>
   <li><strong>Data sync (Pro subscribers only).</strong> A one-way outbound fetch
   from our backend to download updated procedure and reference data. No user data
-  is included in or returned by this request. This feature can be disabled at any
-  time in the app's settings.</li>
+  is included in or returned by this request. Can be disabled at any time in
+  Settings.</li>
+  <li><strong>Push notifications (optional).</strong> If you grant notification
+  permission, an anonymous device token is stored on our backend solely to deliver
+  notifications to your device. See section 3.7.</li>
   <li><strong>Anonymous issue reports (voluntary).</strong> See section 3.6.</li>
 </ul>
 <p>MEL Calculator never contacts our servers.</p>
@@ -1140,6 +1144,18 @@ any other data we hold. No new third-party SDKs or processors are involved.</p>
 maintaining accurate reference data benefits all users of the App.</p>
 <p><strong>Retention:</strong> report data is retained for as long as it is needed
 to investigate and correct the reported issue, then deleted.</p>
+
+<h3>3.7 Push notifications (A32F Tech only — optional)</h3>
+<p>If you grant notification permission, the app registers an anonymous device
+token (provided by Expo's push notification service) and stores it on our backend
+solely for the purpose of delivering notifications to your device.</p>
+<p>This token is not linked to your name, email address, subscription identity, or
+any other personal information. It is not shared with any third party. If you
+revoke notification permission or uninstall the app, the token becomes inactive.</p>
+<p><strong>Legal basis:</strong> legitimate interest (Article 6(1)(f) GDPR) —
+delivering relevant operational notifications to users who have explicitly opted in.</p>
+<p><strong>Retention:</strong> tokens are retained for as long as they are active.
+Inactive tokens are purged periodically.</p>
 
 <h2 id="p4">4. What we do not do</h2>
 <p>We do not:</p>
@@ -1281,11 +1297,17 @@ decompile, or disassemble it (except as permitted by mandatory law); remove noti
 breach applicable law; or use automated means to extract data from the App.</p>
 
 <h2 id="t5">5. Subscription, free trial, and billing</h2>
-<p>The App is offered on a subscription basis with an introductory free trial.
-Duration, term, price, renewal cycle, and applicable taxes are shown in-app before
-you confirm purchase.</p>
-<p><strong>Free trial.</strong> If you do not cancel before the trial ends, the
-subscription will begin automatically.</p>
+<p>A32F Tech is available in a free tier and a Pro subscription. The free tier
+provides access to bundled data only, with no data sync. Pro unlocks data sync
+and is available on the following plans:</p>
+<ul>
+  <li><strong>Annual — €14.99/year</strong>, with a 14-day free trial.</li>
+  <li><strong>Monthly — €1.99/month.</strong></li>
+  <li><strong>Lifetime — one-time purchase.</strong> Price shown in-app.</li>
+</ul>
+<p>Applicable taxes and final pricing are confirmed in-app before purchase.
+<p><strong>Free trial.</strong> Available on the annual plan. If you do not cancel
+before the trial ends, the annual subscription will begin automatically.</p>
 <p><strong>Auto-renewal.</strong> Subscriptions renew automatically unless cancelled
 at least 24 hours before the end of the current period.</p>
 <p><strong>Cancellation.</strong> Cancel any time at
