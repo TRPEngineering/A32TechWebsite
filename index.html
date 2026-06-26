@@ -675,9 +675,9 @@ footer {
     A32F&nbsp;TECH
   </div>
   <ul class="nav-links">
-    <li><a href="#home" onclick="showPage('home'); return false;" id="nav-home">Home</a></li>
-    <li><a href="#privacy" onclick="showPage('privacy'); return false;" id="nav-privacy">Privacy</a></li>
-    <li><a href="#terms" onclick="showPage('terms'); return false;" id="nav-terms">Terms</a></li>
+    <li><a href="/" id="nav-home" class="active">Home</a></li>
+    <li><a href="/a32ftech/privacy">Privacy</a></li>
+    <li><a href="/a32ftech/terms">Terms</a></li>
   </ul>
 </nav>
 
@@ -866,7 +866,7 @@ footer {
     <!-- PRO TIER -->
     <div class="tier-divider">
       <span class="tier-divider-label">Pro</span>
-      <p>€14.99 / year &nbsp;·&nbsp; €1.99 / month &nbsp;·&nbsp; 14-day free trial on annual plan</p>
+      <p>€19.99 / year &nbsp;·&nbsp; €2.99 / month &nbsp;·&nbsp; 14-day free trial on annual plan</p>
     </div>
 
     <div class="feature scroll-reveal">
@@ -1084,7 +1084,7 @@ footer {
 <div id="privacy" class="page legal-page">
 
 <h1>Privacy Policy</h1>
-<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED MAY 2026</div>
+<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED JUNE 2026</div>
 
 <p style="margin-bottom: 3rem; font-size: 0.95rem; color: var(--text-dim);">
 This policy covers the following apps published by TRP Engineering Limited:
@@ -1197,12 +1197,17 @@ and to keep a record of the issue.</p>
 <p><strong>Retention:</strong> support emails are retained for up to 24 months from
 the last message in the thread, then deleted.</p>
 
-<h3>3.5 Google Play Console and App Store Connect diagnostics</h3>
+<h3>3.5 Google Play Console, App Store Connect diagnostics, and Firebase</h3>
 <p>Google Play and Apple's App Store each collect certain technical data (crashes,
 ANRs, install counts, country, device model) and provide it to us in aggregated form
 through the Play Console and App Store Connect respectively. This applies to both
 Apps where they are distributed on the relevant store. This is governed by Google's
 and Apple's own privacy policies and we have no control over the collection.</p>
+<p>A32F Tech also uses <strong>Firebase</strong> (Google LLC) for passive crash
+reporting and performance diagnostics. Firebase may collect device model, OS version,
+and anonymous crash traces to help us identify and fix stability issues. No personal
+data is linked to crash reports, and we do not use Firebase for advertising or user
+tracking. Firebase is governed by Google's privacy policy.</p>
 
 <h3>3.6 Anonymous issue reports (A32F Tech only)</h3>
 <p>A32F Tech includes an optional issue reporting feature that allows you to flag
@@ -1332,7 +1337,7 @@ jurisdiction of the Irish courts.</p>
 <div id="terms" class="page legal-page">
 
 <h1>Terms of Use</h1>
-<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED MAY 2026</div>
+<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED JUNE 2026</div>
 
 <div class="legal-toc">
   <div class="legal-toc-label">Contents</div>
@@ -1399,8 +1404,8 @@ breach applicable law; or use automated means to extract data from the App.</p>
 provides access to bundled data only, with no data sync. Pro unlocks data sync
 and is available on the following plans:</p>
 <ul>
-  <li><strong>Annual — €14.99/year</strong>, with a 14-day free trial.</li>
-  <li><strong>Monthly — €1.99/month.</strong></li>
+  <li><strong>Annual — €19.99/year</strong>, with a 14-day free trial.</li>
+  <li><strong>Monthly — €2.99/month.</strong></li>
   <li><strong>Lifetime — one-time purchase.</strong> Price shown in-app.</li>
 </ul>
 <p>Applicable taxes and final pricing are confirmed in-app before purchase.
@@ -1514,8 +1519,8 @@ Contact: <a href="mailto:contact@trpengineering.ie">contact@trpengineering.ie</a
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="#privacy" onclick="showPage('privacy'); return false;">Privacy Policy</a></li>
-        <li><a href="#terms" onclick="showPage('terms'); return false;">Terms of Use</a></li>
+        <li><a href="/a32ftech/privacy">Privacy Policy</a></li>
+        <li><a href="/a32ftech/terms">Terms of Use</a></li>
         <li><a href="mailto:contact@trpengineering.ie">Data Requests</a></li>
       </ul>
     </div>
@@ -1546,13 +1551,15 @@ function showPage(id) {
   }
 }
 
-// honour direct links (e.g. /#privacy)
 window.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash.replace('#', '');
-  if (hash === 'privacy' || hash === 'terms') {
-    showPage(hash);
-  } else {
-    showPage('home'); // Ensure active state is correctly applied on load
+  if (hash === 'privacy') {
+    window.location.replace('/a32ftech/privacy');
+    return;
+  }
+  if (hash === 'terms') {
+    window.location.replace('/a32ftech/terms');
+    return;
   }
 
   // Add scroll reveal behavior

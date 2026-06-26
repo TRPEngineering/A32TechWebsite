@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — TRP Engineering</title>
+<meta name="description" content="Terms of use for A32F Tech, published by TRP Engineering Limited.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://trpengineering.ie/a32ftech/terms">
+
+<meta property="og:title" content="Terms of Use — TRP Engineering">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trpengineering.ie/a32ftech/terms">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #111111;
+  --bg-card: #141414;
+  --border: #1a2218;
+  --border-strong: #243024;
+  --text: #d8e0d6;
+  --text-dim: #8a978a;
+  --text-faint: #5a655a;
+  --accent: #00cc00;
+  --accent-dim: #009900;
+  --accent-glow: rgba(0, 204, 0, 0.4);
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --good: #6dbb8a;
+  --warn: #e8c468;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #5fff5f; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-links a { color: var(--text-dim); }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+}
+
+/* Decorative grid */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(36, 48, 36, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 48, 36, 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+main { position: relative; z-index: 1; }
+
+/* ===== LEGAL PAGES ===== */
+.legal-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
+}
+
+.legal-page h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.legal-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-page h2 {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 500;
+}
+
+.legal-page h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--text);
+  font-weight: 600;
+  font-family: var(--body);
+}
+
+.legal-page p, .legal-page li {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.legal-page ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.legal-page strong { color: var(--text); }
+.legal-page a { color: var(--accent); }
+
+.legal-toc {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.legal-toc-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.legal-toc ol {
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.legal-toc a { color: var(--text); }
+.legal-toc a:hover { color: var(--accent); }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem 2rem;
+  margin-top: 3rem;
+  background: var(--bg-elev);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+.footer-brand .logo { font-size: 1rem; margin-bottom: 1rem; }
+.footer-brand p {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  max-width: 32ch;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; font-size: 0.9rem; }
+.footer-col a { color: var(--text-dim); }
+.footer-col a:hover { color: var(--accent); }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@keyframes fan-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav svg { animation: none; }
+}
+</style>
+</head>
+
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <a class="logo" href="/" aria-label="Go to Home">
+    <svg viewBox="-500 -500 1000 1000" style="width: 30px; height: 30px; animation: fan-rotate 20s linear infinite; will-change: transform;">
+      <defs>
+        <linearGradient id="nav-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00CC00" />
+          <stop offset="15%" stop-color="#006600" />
+          <stop offset="100%" stop-color="#000000" />
+        </linearGradient>
+        <path id="nav-studio-blade" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" fill="url(#nav-blade-grad)" stroke="#00CC00" stroke-width="5" stroke-linejoin="round"/>
+        <clipPath id="nav-overlap-fix">
+          <rect x="-500" y="-500" width="550" height="500"/>
+        </clipPath>
+      </defs>
+      <g transform="scale(1.15) rotate(15)">
+        <path d="M 0,0 C -22,0 -34,-22 -15,-37 C 11,-56 52,-30 49,11 C 45,52 -7,67 -41,45" fill="none" stroke="#D0D0D0" stroke-width="16" stroke-linecap="round"/>
+      </g>
+      <circle r="145" fill="none" stroke="#00CC00" stroke-width="22"/>
+      <g>
+        <use href="#nav-studio-blade" transform="rotate(0)"/><use href="#nav-studio-blade" transform="rotate(20)"/><use href="#nav-studio-blade" transform="rotate(40)"/><use href="#nav-studio-blade" transform="rotate(60)"/><use href="#nav-studio-blade" transform="rotate(80)"/><use href="#nav-studio-blade" transform="rotate(100)"/><use href="#nav-studio-blade" transform="rotate(120)"/><use href="#nav-studio-blade" transform="rotate(140)"/><use href="#nav-studio-blade" transform="rotate(160)"/><use href="#nav-studio-blade" transform="rotate(180)"/><use href="#nav-studio-blade" transform="rotate(200)"/><use href="#nav-studio-blade" transform="rotate(220)"/><use href="#nav-studio-blade" transform="rotate(240)"/><use href="#nav-studio-blade" transform="rotate(260)"/><use href="#nav-studio-blade" transform="rotate(280)"/><use href="#nav-studio-blade" transform="rotate(300)"/><use href="#nav-studio-blade" transform="rotate(320)"/><use href="#nav-studio-blade" transform="rotate(340)"/>
+        <use href="#nav-studio-blade" transform="rotate(0)" clip-path="url(#nav-overlap-fix)"/>
+      </g>
+      <circle r="460" fill="none" stroke="#00cc00" stroke-width="14"/>
+      <circle r="485" fill="none" stroke="#00cc00" stroke-width="24"/>
+      <path d="M -415,220 A 470 470 0 0 0 415,220" fill="none" stroke="#00CC00" stroke-width="20" stroke-linecap="round"/>
+    </svg>
+    A32F&nbsp;TECH
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/a32ftech/privacy">Privacy</a></li>
+    <li><a href="/a32ftech/terms" class="active">Terms</a></li>
+  </ul>
+</nav>
+
+<main>
+<div class="legal-page">
+
+<h1>Terms of Use</h1>
+<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED JUNE 2026</div>
+
+<div class="legal-toc">
+  <div class="legal-toc-label">Contents</div>
+  <ol>
+    <li><a href="#t1">Agreement</a></li>
+    <li><a href="#t2">The App — what it is and what it is not</a></li>
+    <li><a href="#t3">Eligibility</a></li>
+    <li><a href="#t4">Licence</a></li>
+    <li><a href="#t5">Subscription, free trial, and billing</a></li>
+    <li><a href="#t6">Updates</a></li>
+    <li><a href="#t7">No warranty</a></li>
+    <li><a href="#t8">Limitation of liability</a></li>
+    <li><a href="#t9">Indemnity</a></li>
+    <li><a href="#t10">Termination</a></li>
+    <li><a href="#t11">Trademarks and third parties</a></li>
+    <li><a href="#t12">Governing law and jurisdiction</a></li>
+    <li><a href="#t13">Changes</a></li>
+    <li><a href="#t14">Contact</a></li>
+  </ol>
+</div>
+
+<h2 id="t1">1. Agreement</h2>
+<p>These Terms of Use ("Terms") form a legal agreement between you and
+<strong>TRP Engineering Limited</strong>, a private company limited by shares incorporated
+in Ireland, with its registered office
+in Ireland ("we", "us", "our").</p>
+<p>By installing, opening, or using the A32F Tech mobile application (the "App"), you
+agree to these Terms. If you do not agree, do not use the App. These Terms incorporate
+our <a href="/a32ftech/privacy">Privacy Policy</a> and the Google Play Terms of
+Service.</p>
+
+<h2 id="t2">2. The App — its purpose and its limits</h2>
+<p>A32F Tech is a quick-reference tool for licensed aircraft
+engineers and technicians. It is intended for off-aircraft use — for type rating
+revision, training, exam preparation, and informal reference between tasks.</p>
+<p><strong>A32F Tech is not approved maintenance data.</strong> It does not replace,
+and is not intended to replace: the AMM, MMEL, MEL, CDL, SRM, TSM, or any other
+documentation issued by Airbus, your operator, or your civil aviation authority;
+or your company's procedures, approvals, and authorisations.</p>
+<p>You acknowledge that the use of approved maintenance data — and not third-party
+apps such as this one — is a fundamental requirement of every licensed aircraft
+engineer's training and licence conditions. Using A32F Tech as the source of
+information for any maintenance action, dispatch decision, defect deferral, or
+release to service would be contrary to that training and contrary to the conditions
+of an EASA Part-66 (or equivalent) licence.</p>
+<p>By using the App you confirm that you understand this and that you will not use
+the App for any such purpose.</p>
+
+<h2 id="t3">3. Eligibility</h2>
+<p>You may use the App if you are at least 18 years of age, and a licensed aircraft
+engineer, technician, apprentice, aviation student, or another person with a
+legitimate professional or training interest in A320 family maintenance.</p>
+
+<h2 id="t4">4. Licence</h2>
+<p>Subject to these Terms, we grant you a personal, non-exclusive, non-transferable,
+revocable licence to install and use the App on devices you own or control, for your
+own internal reference and training purposes.</p>
+<p>You must not copy, redistribute, resell, or sublicense the App; reverse engineer,
+decompile, or disassemble it (except as permitted by mandatory law); remove notices;
+breach applicable law; or use automated means to extract data from the App.</p>
+
+<h2 id="t5">5. Subscription, free trial, and billing</h2>
+<p>A32F Tech is available in a free tier and a Pro subscription. The free tier
+provides access to bundled data only, with no data sync. Pro unlocks data sync
+and is available on the following plans:</p>
+<ul>
+  <li><strong>Annual — €19.99/year</strong>, with a 14-day free trial.</li>
+  <li><strong>Monthly — €2.99/month.</strong></li>
+  <li><strong>Lifetime — one-time purchase.</strong> Price shown in-app.</li>
+</ul>
+<p>Applicable taxes and final pricing are confirmed in-app before purchase.
+<p><strong>Free trial.</strong> Available on the annual plan. If you do not cancel
+before the trial ends, the annual subscription will begin automatically.</p>
+<p><strong>Auto-renewal.</strong> Subscriptions renew automatically unless cancelled
+at least 24 hours before the end of the current period.</p>
+<p><strong>Cancellation.</strong> Cancel any time at
+<a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>.
+Access continues until the end of the current period.</p>
+<p><strong>Refunds.</strong> Processed by Google under Google Play's refund policy.</p>
+<p><strong>Price changes.</strong> If we ever increase the subscription price, your
+existing subscription will not be affected. You will continue to renew at the price
+you originally subscribed on for as long as your subscription remains active and
+uninterrupted. The new price will only apply to new subscribers, or to anyone whose
+subscription has lapsed and who resubscribes after the change.</p>
+<p><strong>EU/EEA consumers — withdrawal right.</strong> By starting a paid
+subscription within the 14-day statutory withdrawal period, you expressly request
+that performance begins immediately and acknowledge you lose the right of withdrawal
+once the service has been fully provided.</p>
+
+<h2 id="t6">6. Updates</h2>
+<p>We may release updates through Google Play. Updates may add, modify, or remove
+features. We are not obliged to maintain any particular feature or compatibility with
+any particular device.</p>
+
+<h2 id="t7">7. No warranty</h2>
+<p>To the maximum extent permitted by law, the App and its content are provided
+<strong>"as is" and "as available"</strong>, without warranty of any kind. We do
+not warrant accuracy, completeness, currency, uninterrupted operation, or fitness
+for a particular purpose. Nothing in these Terms excludes any non-excludable consumer
+rights you have under Irish or EU law.</p>
+
+<h2 id="t8">8. Limitation of liability</h2>
+<p>You acknowledge that (a) every licensed aircraft engineer is trained and required
+by their licence conditions to use only approved maintenance data when working on
+an aircraft; (b) A32F Tech is not approved maintenance data and is not held out as
+such; and (c) any maintenance action, dispatch decision, defect deferral, or release
+to service is the professional responsibility of the engineer who signs for it,
+performed on the basis of approved data, not on the basis of the App.</p>
+<p>To the maximum extent permitted by law, TRP Engineering Limited is not liable for any
+maintenance action, dispatch decision, defect deferral, or release to service made
+— whether wholly or partly — in reliance on the App, nor for damage to aircraft,
+equipment, persons, or property arising from such reliance, nor for any indirect,
+incidental, special, consequential, or punitive damages.</p>
+<p>Our total aggregate liability is limited to the greater of (a) the amount you
+paid us in the 12 months preceding the event, or (b) €100. Nothing limits liability
+for death or personal injury caused by negligence, fraud, or any other liability
+that cannot be excluded under applicable law.</p>
+<p><strong>Professional responsibility.</strong> Nothing in the App alters your
+professional responsibilities under your licence, your operator's MOE/MOM, or
+applicable aviation regulations. Those responsibilities exist independently of the
+App and are unaffected by it.</p>
+
+<h2 id="t9">9. Indemnity</h2>
+<p>You agree to indemnify and hold harmless TRP Engineering Limited, its directors,
+officers, and employees from claims, damages, losses, liabilities, costs, and
+expenses (including reasonable legal fees) arising out of your breach of these
+Terms, your misuse of the App, or any use of the App contrary to the conditions
+of your licence or contrary to your training, including any use of the App as a
+source of information for maintenance work that should have been performed by
+reference to approved data.</p>
+
+<h2 id="t10">10. Termination</h2>
+<p>You may stop using the App at any time by uninstalling it. We may terminate or
+suspend your access if you breach these Terms or if we discontinue the App.
+Disclaimers, limitation of liability, indemnity, and governing law survive
+termination.</p>
+
+<h2 id="t11">11. Trademarks and third parties</h2>
+<p>The App is independent. It is not produced by, endorsed by, or affiliated with
+Airbus SE, Airbus Operations, any airline, any maintenance organisation, or any
+civil aviation authority. "Airbus", "A320", "A321", and related marks are trademarks
+of Airbus SE. All trademarks are the property of their respective owners.</p>
+
+<h2 id="t12">12. Governing law and jurisdiction</h2>
+<p>These Terms are governed by the laws of Ireland. The courts of Ireland have
+exclusive jurisdiction, except that consumers resident in another EU/EEA member
+state may bring proceedings in the courts of their own country, where mandatory
+consumer protection law so provides.</p>
+
+<h2 id="t13">13. Changes</h2>
+<p>We may update these Terms from time to time. Material changes will be notified
+through the App or by an in-app prompt. Continued use after changes take effect
+constitutes acceptance.</p>
+
+<h2 id="t14">14. Contact</h2>
+<p><strong>TRP Engineering Limited</strong><br>
+Ireland<br>
+Contact: <a href="mailto:contact@trpengineering.ie">contact@trpengineering.ie</a></p>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="/">A32F&nbsp;TECH</a>
+      <p>An independent reference companion for licensed engineers working on the
+      Airbus A320 family. Built in Ireland.</p>
+    </div>
+    <div class="footer-col">
+      <h4>App</h4>
+      <ul>
+        <li><a href="/">Overview</a></li>
+        <li><a href="#" style="opacity:0.5; cursor:default;" aria-disabled="true">Google Play — soon</a></li>
+        <li><a href="#" style="opacity:0.5; cursor:default;" aria-disabled="true">App Store — soon</a></li>
+        <li><a href="mailto:contact@trpengineering.ie">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/a32ftech/privacy">Privacy Policy</a></li>
+        <li><a href="/a32ftech/terms">Terms of Use</a></li>
+        <li><a href="mailto:contact@trpengineering.ie">Data Requests</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TRP Engineering · Registered in Ireland</span>
+    <span>NOT AFFILIATED WITH AIRBUS · ALL TRADEMARKS BELONG TO THEIR OWNERS</span>
+  </div>
+</footer>
+
+</body>
+</html>

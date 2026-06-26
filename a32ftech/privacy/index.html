@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — TRP Engineering</title>
+<meta name="description" content="Privacy policy for A32F Tech and MEL Calculator, published by TRP Engineering Limited.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://trpengineering.ie/a32ftech/privacy">
+
+<meta property="og:title" content="Privacy Policy — TRP Engineering">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trpengineering.ie/a32ftech/privacy">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #111111;
+  --bg-card: #141414;
+  --border: #1a2218;
+  --border-strong: #243024;
+  --text: #d8e0d6;
+  --text-dim: #8a978a;
+  --text-faint: #5a655a;
+  --accent: #00cc00;
+  --accent-dim: #009900;
+  --accent-glow: rgba(0, 204, 0, 0.4);
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --good: #6dbb8a;
+  --warn: #e8c468;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #5fff5f; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-links a { color: var(--text-dim); }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+}
+
+/* Decorative grid */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(36, 48, 36, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 48, 36, 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+main { position: relative; z-index: 1; }
+
+/* ===== LEGAL PAGES ===== */
+.legal-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
+}
+
+.legal-page h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.legal-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-page h2 {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 500;
+}
+
+.legal-page h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--text);
+  font-weight: 600;
+  font-family: var(--body);
+}
+
+.legal-page p, .legal-page li {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.legal-page ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.legal-page strong { color: var(--text); }
+.legal-page a { color: var(--accent); }
+
+.legal-toc {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.legal-toc-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.legal-toc ol {
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.legal-toc a { color: var(--text); }
+.legal-toc a:hover { color: var(--accent); }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem 2rem;
+  margin-top: 3rem;
+  background: var(--bg-elev);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+.footer-brand .logo { font-size: 1rem; margin-bottom: 1rem; }
+.footer-brand p {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  max-width: 32ch;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; font-size: 0.9rem; }
+.footer-col a { color: var(--text-dim); }
+.footer-col a:hover { color: var(--accent); }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@keyframes fan-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav svg { animation: none; }
+}
+</style>
+</head>
+
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <a class="logo" href="/" aria-label="Go to Home">
+    <svg viewBox="-500 -500 1000 1000" style="width: 30px; height: 30px; animation: fan-rotate 20s linear infinite; will-change: transform;">
+      <defs>
+        <linearGradient id="nav-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00CC00" />
+          <stop offset="15%" stop-color="#006600" />
+          <stop offset="100%" stop-color="#000000" />
+        </linearGradient>
+        <path id="nav-studio-blade" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" fill="url(#nav-blade-grad)" stroke="#00CC00" stroke-width="5" stroke-linejoin="round"/>
+        <clipPath id="nav-overlap-fix">
+          <rect x="-500" y="-500" width="550" height="500"/>
+        </clipPath>
+      </defs>
+      <g transform="scale(1.15) rotate(15)">
+        <path d="M 0,0 C -22,0 -34,-22 -15,-37 C 11,-56 52,-30 49,11 C 45,52 -7,67 -41,45" fill="none" stroke="#D0D0D0" stroke-width="16" stroke-linecap="round"/>
+      </g>
+      <circle r="145" fill="none" stroke="#00CC00" stroke-width="22"/>
+      <g>
+        <use href="#nav-studio-blade" transform="rotate(0)"/><use href="#nav-studio-blade" transform="rotate(20)"/><use href="#nav-studio-blade" transform="rotate(40)"/><use href="#nav-studio-blade" transform="rotate(60)"/><use href="#nav-studio-blade" transform="rotate(80)"/><use href="#nav-studio-blade" transform="rotate(100)"/><use href="#nav-studio-blade" transform="rotate(120)"/><use href="#nav-studio-blade" transform="rotate(140)"/><use href="#nav-studio-blade" transform="rotate(160)"/><use href="#nav-studio-blade" transform="rotate(180)"/><use href="#nav-studio-blade" transform="rotate(200)"/><use href="#nav-studio-blade" transform="rotate(220)"/><use href="#nav-studio-blade" transform="rotate(240)"/><use href="#nav-studio-blade" transform="rotate(260)"/><use href="#nav-studio-blade" transform="rotate(280)"/><use href="#nav-studio-blade" transform="rotate(300)"/><use href="#nav-studio-blade" transform="rotate(320)"/><use href="#nav-studio-blade" transform="rotate(340)"/>
+        <use href="#nav-studio-blade" transform="rotate(0)" clip-path="url(#nav-overlap-fix)"/>
+      </g>
+      <circle r="460" fill="none" stroke="#00cc00" stroke-width="14"/>
+      <circle r="485" fill="none" stroke="#00cc00" stroke-width="24"/>
+      <path d="M -415,220 A 470 470 0 0 0 415,220" fill="none" stroke="#00CC00" stroke-width="20" stroke-linecap="round"/>
+    </svg>
+    A32F&nbsp;TECH
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/a32ftech/privacy" class="active">Privacy</a></li>
+    <li><a href="/a32ftech/terms">Terms</a></li>
+  </ul>
+</nav>
+
+<main>
+<div class="legal-page">
+
+<h1>Privacy Policy</h1>
+<div class="legal-meta">EFFECTIVE MAY 2026 · LAST UPDATED JUNE 2026</div>
+
+<p style="margin-bottom: 3rem; font-size: 0.95rem; color: var(--text-dim);">
+This policy covers the following apps published by TRP Engineering Limited:
+<strong>A32F Tech</strong> (Android — subscription; iOS coming soon) and
+<strong>MEL Calculator</strong> (Wear OS — one-time purchase). Where practices
+differ between the two, the relevant section says so.</p>
+
+<div class="legal-toc">
+  <div class="legal-toc-label">Contents</div>
+  <ol>
+    <li><a href="#p1">Who we are</a></li>
+    <li><a href="#p2">Summary</a></li>
+    <li><a href="#p3">What we collect, why, and on what legal basis</a></li>
+    <li><a href="#p4">What we do not do</a></li>
+    <li><a href="#p5">Children</a></li>
+    <li><a href="#p6">International transfers</a></li>
+    <li><a href="#p7">Your rights</a></li>
+    <li><a href="#p8">Security</a></li>
+    <li><a href="#p9">Changes to this policy</a></li>
+    <li><a href="#p10">Contact</a></li>
+  </ol>
+</div>
+
+<h2 id="p1">1. Who we are</h2>
+<p>A32F Tech and MEL Calculator (each an "App", together the "Apps") are published by
+<strong>TRP Engineering Limited</strong>, a private company limited by shares incorporated
+in Ireland, with its registered
+office in Ireland ("we", "us", "our").</p>
+<p>For the purposes of the EU General Data Protection Regulation (Regulation (EU)
+2016/679, "GDPR") and the Irish Data Protection Act 2018, we are the
+<strong>data controller</strong> for any personal data processed in connection with the Apps.</p>
+<p>You can contact us about this policy at <a href="mailto:contact@trpengineering.ie">contact@trpengineering.ie</a>.</p>
+
+<h2 id="p2">2. Summary</h2>
+<p>We have built both Apps to do their job without collecting personal data. You do
+not need an account. Both Apps work fully offline. A32F Tech Pro subscribers can
+optionally enable a one-way data sync to receive procedure and reference updates —
+no user data is sent or returned by this request. We do not run advertising,
+tracking, or third-party analytics inside either App.</p>
+<p>The only personal data that exists in connection with the Apps is:</p>
+<ul>
+  <li><strong>Subscription billing data (A32F Tech only)</strong>, processed by
+  Google (Google Play Billing) and Apple (App Store) and by our subscription
+  management provider, RevenueCat. We do not see your payment details.</li>
+  <li><strong>One-time purchase data (MEL Calculator only)</strong>, processed by
+  Google Play Billing. We do not see your payment details and we do not use
+  RevenueCat for this app.</li>
+  <li><strong>Support correspondence</strong>, if you choose to email us.</li>
+</ul>
+<p>The sections below explain this in detail and set out your rights under GDPR.</p>
+
+<h2 id="p3">3. What we collect, why, and on what legal basis</h2>
+
+<h3>3.1 Information processed inside the Apps</h3>
+<p><strong>No personal data.</strong> Neither App collects, stores, or transmits
+any personally identifiable information. Reference content (A32F Tech) and the
+MEL date calculation logic (MEL Calculator) are bundled with each App and run
+locally. We do not operate advertising or tracking SDKs inside them.</p>
+<p>A32F Tech performs three types of network activity, all limited in scope:</p>
+<ul>
+  <li><strong>Data sync (Pro subscribers only).</strong> A one-way outbound fetch
+  from our backend to download updated procedure and reference data. No user data
+  is included in or returned by this request. Can be disabled at any time in
+  Settings.</li>
+  <li><strong>Push notifications (optional).</strong> If you grant notification
+  permission, an anonymous device token is stored on our backend solely to deliver
+  notifications to your device. See section 3.7.</li>
+  <li><strong>Anonymous issue reports (voluntary).</strong> See section 3.6.</li>
+</ul>
+<p>MEL Calculator never contacts our servers.</p>
+<p>All user-created data (My Parts, My Refs, bookmarks, notepad entries, imported
+documents, and any attached photos) is stored exclusively on your device using
+hardware-backed AES encryption and is never transmitted. Any
+preferences you set (dark mode, default aircraft variant) are stored locally only.
+MEL Calculator saves no preferences and no history.</p>
+
+<h3>3.2 Subscription data (A32F Tech)</h3>
+<p>If you start a free trial or subscribe to a paid plan, the transaction is handled
+by <strong>Google Play Billing</strong>. Google processes your payment information
+under its own privacy policy. We never receive your payment card details.</p>
+<p>To manage your subscription entitlement, we use <strong>RevenueCat, Inc.</strong>
+as a sub-processor. RevenueCat receives an anonymous app-generated user identifier,
+purchase receipt data from Google Play, and basic device metadata (platform, app
+version, country code, language). RevenueCat does not receive your name, email, or
+payment details. Their privacy policy is at
+<a href="https://www.revenuecat.com/privacy">https://www.revenuecat.com/privacy</a>.</p>
+<p><strong>Legal basis:</strong> performance of a contract (Article 6(1)(b) GDPR).</p>
+<p><strong>Retention:</strong> purchase records are retained for as long as you have
+an active entitlement and for up to 7 years after the last transaction, to comply
+with Irish tax and accounting law (Section 886 Taxes Consolidation Act 1997).</p>
+
+<h3>3.3 One-time purchase data (MEL Calculator)</h3>
+<p>If you purchase MEL Calculator on Google Play, the transaction is handled by
+<strong>Google Play Billing</strong>. Google processes your payment information
+under its own privacy policy. We never receive your payment card details.</p>
+<p>MEL Calculator does not use RevenueCat or any third-party subscription management
+service. We receive only the aggregate sales and country data that Google provides
+through the Play Console.</p>
+<p><strong>Legal basis:</strong> performance of a contract (Article 6(1)(b) GDPR).</p>
+<p><strong>Retention:</strong> purchase records are retained for up to 7 years
+after the transaction, to comply with Irish tax and accounting law
+(Section 886 Taxes Consolidation Act 1997).</p>
+
+<h3>3.4 Support correspondence</h3>
+<p>If you email <a href="mailto:contact@trpengineering.ie">contact@trpengineering.ie</a>, we will receive your
+email address and the contents of your message. We use this only to respond to you
+and to keep a record of the issue.</p>
+<p><strong>Legal basis:</strong> legitimate interest (Article 6(1)(f) GDPR).</p>
+<p><strong>Retention:</strong> support emails are retained for up to 24 months from
+the last message in the thread, then deleted.</p>
+
+<h3>3.5 Google Play Console, App Store Connect diagnostics, and Firebase</h3>
+<p>Google Play and Apple's App Store each collect certain technical data (crashes,
+ANRs, install counts, country, device model) and provide it to us in aggregated form
+through the Play Console and App Store Connect respectively. This applies to both
+Apps where they are distributed on the relevant store. This is governed by Google's
+and Apple's own privacy policies and we have no control over the collection.</p>
+<p>A32F Tech also uses <strong>Firebase</strong> (Google LLC) for passive crash
+reporting and performance diagnostics. Firebase may collect device model, OS version,
+and anonymous crash traces to help us identify and fix stability issues. No personal
+data is linked to crash reports, and we do not use Firebase for advertising or user
+tracking. Firebase is governed by Google's privacy policy.</p>
+
+<h3>3.6 Anonymous issue reports (A32F Tech only)</h3>
+<p>A32F Tech includes an optional issue reporting feature that allows you to flag
+errors in reset procedures or CB location data. Submission is voluntary and requires
+no account.</p>
+<p>The report contains: the section type (e.g. ECAM reset, CB location), a
+description of the affected entry, the type of problem, and optionally the aircraft
+type and a suggested correction. None of these fields contain or require personally
+identifiable information.</p>
+<p>Reports are transmitted to our API over HTTPS and are not retained on your
+device after submission. We do not link reports to individual users, devices, or
+any other data we hold. No new third-party SDKs or processors are involved.</p>
+<p><strong>Legal basis:</strong> legitimate interest (Article 6(1)(f) GDPR) —
+maintaining accurate reference data benefits all users of the App.</p>
+<p><strong>Retention:</strong> report data is retained for as long as it is needed
+to investigate and correct the reported issue, then deleted.</p>
+
+<h3>3.7 Push notifications (A32F Tech only — optional)</h3>
+<p>If you grant notification permission, the app registers an anonymous device
+token (provided by Expo's push notification service) and stores it on our backend
+solely for the purpose of delivering notifications to your device.</p>
+<p>This token is not linked to your name, email address, subscription identity, or
+any other personal information. It is not shared with any third party. If you
+revoke notification permission or uninstall the app, the token becomes inactive.</p>
+<p><strong>Legal basis:</strong> legitimate interest (Article 6(1)(f) GDPR) —
+delivering relevant operational notifications to users who have explicitly opted in.</p>
+<p><strong>Retention:</strong> tokens are retained for as long as they are active.
+Inactive tokens are purged periodically.</p>
+
+<h3>3.8 Part photos (A32F Tech only — optional)</h3>
+<p>When saving a part entry in My Parts, you can optionally attach a photo taken
+with your camera or selected from your photo library. Photos are compressed and
+stored locally on your device only. They are never uploaded, transmitted, or shared
+with any third party. You can remove any attached photo at any time from within
+the app.</p>
+<p>The app accesses your camera or photo library only when you explicitly initiate
+this action. No photos are accessed passively or in the background.</p>
+<p><strong>Legal basis:</strong> consent — you initiate the action each time.</p>
+
+<h3>3.9 Imported documents and images (A32F Tech only — optional)</h3>
+<p>My Documents allows you to import PDFs and images from your device storage or
+photo library into the app. Imported files are stored exclusively on your device
+and are never uploaded, transmitted, or shared with any third party.</p>
+<p>The app accesses your device storage or photo library only when you explicitly
+choose to import a file. No files are accessed passively or in the background.
+You can delete any imported document at any time from within the app.</p>
+<p>The Documents backup feature exports your imported files as a ZIP archive stored
+to a location of your choosing on your device. This file is not uploaded anywhere
+by the app.</p>
+<p><strong>Legal basis:</strong> consent — you initiate each import action.</p>
+
+<h2 id="p4">4. What we do not do</h2>
+<p>We do not:</p>
+<ul>
+  <li>Sell or rent personal data to anyone.</li>
+  <li>Run advertising or share data with ad networks.</li>
+  <li>Use third-party analytics or tracking inside the Apps.</li>
+  <li>Track your location.</li>
+  <li>Access your contacts, microphone, or location.</li>
+  <li>Access your camera, photo library, or device storage for any purpose other
+  than attaching a photo to a part entry in My Parts (section 3.8) or importing
+  a file into My Documents (section 3.9) — both A32F Tech only, both
+  user-initiated. All files are stored locally and never transmitted.</li>
+  <li>Profile users or make automated decisions producing legal effects.</li>
+  <li>Transfer data outside the EEA except where Google and RevenueCat (US-based)
+  process subscription data on our behalf, under standard contractual clauses and
+  applicable safeguards.</li>
+</ul>
+
+<h2 id="p5">5. Children</h2>
+<p>Both Apps are professional tools for licensed aircraft engineers. They are not
+directed at children and are rated for adults. We do not knowingly collect personal
+data from anyone under 18.</p>
+
+<h2 id="p6">6. International transfers</h2>
+<p>Where Google or RevenueCat process personal data outside the European Economic
+Area (typically in the United States), they do so under the European Commission's
+Standard Contractual Clauses and any additional safeguards required under the GDPR.
+You can request copies of the relevant safeguards from us at contact@trpengineering.ie.</p>
+
+<h2 id="p7">7. Your rights</h2>
+<p>Under the GDPR you have the right to access, rectify, erase, restrict, or port
+personal data we hold about you; and to object to processing based on legitimate
+interests.</p>
+<p>In practice, for the vast majority of users we hold no personally identifiable
+data at all. All app data (My Parts, My Refs, bookmarks) lives on your device and
+we cannot access it. Issue reports are anonymous by design — we have no way to
+link a report back to an individual. If you have never contacted us by email, there
+is nothing we hold that could identify you.</p>
+<p>The only personal data TRP Engineering Limited could hold about a specific individual is
+support correspondence. If you have emailed us and want that deleted, email
+<a href="mailto:contact@trpengineering.ie">contact@trpengineering.ie</a> and we will action
+it promptly.</p>
+<p>For billing and subscription data, that is held by Google and RevenueCat under
+their own privacy policies — rights requests relating to payment or purchase records
+should be directed to them.</p>
+<p>You also have the right to lodge a complaint with the Irish Data Protection
+Commission (<a href="https://www.dataprotection.ie">dataprotection.ie</a>) or with
+the supervisory authority in your country of residence.</p>
+
+<h2 id="p8">8. Security</h2>
+<p>We use commercially reasonable technical and organisational measures to protect
+personal data, including encryption in transit for any data exchanged with Google
+and RevenueCat, and access controls on our internal systems. The volume and
+sensitivity of data we hold is deliberately minimal.</p>
+<p>All user-created data stored on-device by A32F Tech (My Parts, My Refs,
+bookmarks) is protected using hardware-backed AES encryption provided by the
+device's operating system. The app does not handle or store payment information
+at any point — all billing is processed by Google Play Billing via RevenueCat.</p>
+
+<h2 id="p9">9. Changes to this policy</h2>
+<p>We may update this policy from time to time. Material changes will be notified
+through the relevant App and on our website at
+<a href="https://trpengineering.ie/a32ftech/privacy">trpengineering.ie/a32ftech/privacy</a>. The "Last updated"
+date at the top shows when it was last changed.</p>
+
+<h2 id="p10">10. Contact</h2>
+<p><strong>Data controller:</strong> TRP Engineering Limited<br>
+<strong>Registered office:</strong> Ireland<br>
+<strong>Email:</strong> <a href="mailto:contact@trpengineering.ie">contact@trpengineering.ie</a></p>
+
+<p style="margin-top: 3rem; font-size: 0.85rem; color: var(--text-faint);">
+This policy is governed by Irish law. Any disputes are subject to the exclusive
+jurisdiction of the Irish courts.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="/">A32F&nbsp;TECH</a>
+      <p>An independent reference companion for licensed engineers working on the
+      Airbus A320 family. Built in Ireland.</p>
+    </div>
+    <div class="footer-col">
+      <h4>App</h4>
+      <ul>
+        <li><a href="/">Overview</a></li>
+        <li><a href="#" style="opacity:0.5; cursor:default;" aria-disabled="true">Google Play — soon</a></li>
+        <li><a href="#" style="opacity:0.5; cursor:default;" aria-disabled="true">App Store — soon</a></li>
+        <li><a href="mailto:contact@trpengineering.ie">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/a32ftech/privacy">Privacy Policy</a></li>
+        <li><a href="/a32ftech/terms">Terms of Use</a></li>
+        <li><a href="mailto:contact@trpengineering.ie">Data Requests</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TRP Engineering · Registered in Ireland</span>
+    <span>NOT AFFILIATED WITH AIRBUS · ALL TRADEMARKS BELONG TO THEIR OWNERS</span>
+  </div>
+</footer>
+
+</body>
+</html>
