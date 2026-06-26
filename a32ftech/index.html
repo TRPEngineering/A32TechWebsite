@@ -2,10 +2,1030 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://trpengineering.ie/">
-<title>A32F Tech — TRP Engineering</title>
-<link rel="canonical" href="https://trpengineering.ie/">
-<script>window.location.replace("https://trpengineering.ie/");</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRP Engineering</title>
+<meta name="description" content="Your digital black book. A fast, offline reference and training companion for licensed aircraft engineers on the A320 family.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:title" content="A32F Tech — A320 family reference companion">
+<meta property="og:description" content="A fast, offline reference and training companion for licensed engineers and technicians on the Airbus A320 family.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trpengineering.ie/a32ftech">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A32F Tech">
+<meta name="twitter:description" content="Offline reference companion for A320 family engineers.">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-elev: #111111;
+  --bg-card: #141414;
+  --border: #1a2218;
+  --border-strong: #243024;
+  --text: #d8e0d6;
+  --text-dim: #8a978a;
+  --text-faint: #5a655a;
+  --accent: #00cc00;
+  --accent-dim: #009900;
+  --accent-glow: rgba(0, 204, 0, 0.4);
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --good: #6dbb8a;
+  --warn: #e8c468;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #5fff5f; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 14, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-links a { color: var(--text-dim); }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 9rem 2rem 6rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 36vw;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+}
+
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+.hero-meta span::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--text-faint);
+  border-radius: 50%;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  max-width: 14ch;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  text-shadow: 0 0 30px var(--accent-glow);
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--text-dim);
+  max-width: 48ch;
+  margin-bottom: 3rem;
+  line-height: 1.55;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-primary:hover { background: #5fff5f; transform: translateY(-1px); }
+
+.btn-ghost {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Hero schematic */
+.hero-schematic {
+  width: 100%;
+  aspect-ratio: 1;
+  opacity: 0.85;
+  pointer-events: none;
+}
+@media (max-width: 1024px) {
+  .hero-schematic { display: none; }
+}
+
+.hero-schematic svg { width: 100%; height: 100%; display: block; }
+.hero-schematic .fan-rotor {
+  transform-origin: 300px 300px;
+  animation: fan-rotate 60s linear infinite;
+  will-change: transform;
+}
+
+@keyframes fan-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-schematic .fan-rotor, nav svg { animation: none; }
+}
+
+/* Decorative grid */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(36, 48, 36, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 48, 36, 0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+main { position: relative; z-index: 1; }
+
+/* ===== SECTIONS ===== */
+section.block {
+  padding: 3rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+  max-width: 24ch;
+}
+
+/* Disclaimer block */
+.notam {
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--warn);
+  background: var(--bg-elev);
+  padding: 1.75rem 2rem;
+  margin: 3rem 0;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.notam::before {
+  content: 'ADVISORY';
+  position: absolute;
+  top: -10px; left: 1.5rem;
+  background: var(--bg);
+  padding: 0 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--warn);
+}
+
+.notam p { color: var(--text-dim); line-height: 1.6; }
+.notam strong { color: var(--text); }
+
+/* Feature grid */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 3rem;
+}
+
+.feature {
+  background: var(--bg);
+  padding: 2rem 1.75rem;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.feature:hover {
+  background: var(--bg-card);
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 40px -10px rgba(0,0,0,0.7);
+}
+
+.feature-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.feature p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.tier-divider {
+  grid-column: 1 / -1;
+  background: var(--bg);
+  padding: 2rem 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.tier-divider-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.tier-divider p {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  font-family: var(--mono);
+}
+
+/* Specs strip */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+.spec {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border);
+  text-align: left;
+}
+.spec:last-child { border-right: none; }
+
+.spec-value {
+  font-family: var(--display);
+  font-size: 2rem;
+  color: var(--accent-dim);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+.spec-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Built-by block */
+.builder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin: 2.5rem 0;
+}
+@media (max-width: 768px) { .builder { grid-template-columns: 1fr; gap: 2rem; } }
+
+.builder-text p {
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.builder-text p:first-child::first-letter {
+  font-family: var(--display);
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.85;
+  margin: 0.1em 0.1em 0 0;
+  color: var(--accent-dim);
+  font-weight: 500;
+}
+
+.callsign {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  margin-top: 2rem;
+}
+
+/* Coming-soon store buttons */
+.btn-store {
+  opacity: 0.55;
+  cursor: default;
+  position: relative;
+}
+.store-soon {
+  font-size: 0.6rem;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.1em 0.45em;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.cta-subtext {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem 2rem;
+  margin-top: 3rem;
+  background: var(--bg-elev);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+.footer-brand .logo { font-size: 1rem; margin-bottom: 1rem; }
+.footer-brand p {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  max-width: 32ch;
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; font-size: 0.9rem; }
+.footer-col a { color: var(--text-dim); }
+.footer-col a:hover { color: var(--accent); }
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 0.8s ease-out forwards;
+}
+.reveal-1 { animation-delay: 0.05s; }
+.reveal-2 { animation-delay: 0.15s; }
+.reveal-3 { animation-delay: 0.25s; }
+.reveal-4 { animation-delay: 0.35s; }
+.reveal-5 { animation-delay: 0.45s; }
+
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
-<body></body>
+
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <a class="logo" href="/a32ftech" aria-label="Go to Home">
+    <svg viewBox="-500 -500 1000 1000" style="width: 30px; height: 30px; animation: fan-rotate 20s linear infinite; will-change: transform;">
+      <defs>
+        <linearGradient id="nav-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00CC00" />
+          <stop offset="15%" stop-color="#006600" />
+          <stop offset="100%" stop-color="#000000" />
+        </linearGradient>
+        <path id="nav-studio-blade" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" fill="url(#nav-blade-grad)" stroke="#00CC00" stroke-width="5" stroke-linejoin="round"/>
+        <clipPath id="nav-overlap-fix">
+          <rect x="-500" y="-500" width="550" height="500"/>
+        </clipPath>
+      </defs>
+      <g transform="scale(1.15) rotate(15)">
+        <path d="M 0,0 C -22,0 -34,-22 -15,-37 C 11,-56 52,-30 49,11 C 45,52 -7,67 -41,45" fill="none" stroke="#D0D0D0" stroke-width="16" stroke-linecap="round"/>
+      </g>
+      <circle r="145" fill="none" stroke="#00CC00" stroke-width="22"/>
+      <g>
+        <use href="#nav-studio-blade" transform="rotate(0)"/><use href="#nav-studio-blade" transform="rotate(20)"/><use href="#nav-studio-blade" transform="rotate(40)"/><use href="#nav-studio-blade" transform="rotate(60)"/><use href="#nav-studio-blade" transform="rotate(80)"/><use href="#nav-studio-blade" transform="rotate(100)"/><use href="#nav-studio-blade" transform="rotate(120)"/><use href="#nav-studio-blade" transform="rotate(140)"/><use href="#nav-studio-blade" transform="rotate(160)"/><use href="#nav-studio-blade" transform="rotate(180)"/><use href="#nav-studio-blade" transform="rotate(200)"/><use href="#nav-studio-blade" transform="rotate(220)"/><use href="#nav-studio-blade" transform="rotate(240)"/><use href="#nav-studio-blade" transform="rotate(260)"/><use href="#nav-studio-blade" transform="rotate(280)"/><use href="#nav-studio-blade" transform="rotate(300)"/><use href="#nav-studio-blade" transform="rotate(320)"/><use href="#nav-studio-blade" transform="rotate(340)"/>
+        <use href="#nav-studio-blade" transform="rotate(0)" clip-path="url(#nav-overlap-fix)"/>
+      </g>
+      <circle r="460" fill="none" stroke="#00cc00" stroke-width="14"/>
+      <circle r="485" fill="none" stroke="#00cc00" stroke-width="24"/>
+      <path d="M -415,220 A 470 470 0 0 0 415,220" fill="none" stroke="#00CC00" stroke-width="20" stroke-linecap="round"/>
+    </svg>
+    A32F&nbsp;TECH
+  </a>
+  <ul class="nav-links">
+    <li><a href="/a32ftech" class="active">Home</a></li>
+    <li><a href="/a32ftech/privacy">Privacy</a></li>
+    <li><a href="/a32ftech/terms">Terms</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-meta reveal reveal-1">
+      <span>ANDROID</span>
+      <span>iOS COMING SOON</span>
+      <span>OFFLINE</span>
+      <span>EASA PART-66</span>
+    </div>
+
+    <h1 class="reveal reveal-2">Your digital <em>black book.</em></h1>
+
+    <p class="lede reveal reveal-3">
+      A fast, offline reference and training companion for licensed engineers and
+      technicians on the Airbus A320, A321, and A321 XLR. Every nugget you'd otherwise
+      spend a shift hunting for, in one place.
+    </p>
+
+    <div class="cta-row reveal reveal-4">
+      <a class="btn btn-primary btn-store" href="#" id="play-link" aria-disabled="true" tabindex="-1">
+        Google Play <span class="store-soon">COMING SOON</span>
+      </a>
+      <a class="btn btn-primary btn-store" href="#" id="appstore-link" aria-disabled="true" tabindex="-1">
+        App Store <span class="store-soon">COMING SOON</span>
+      </a>
+      <a class="btn btn-ghost" href="#features">What's inside</a>
+    </div>
+  </div>
+
+  <div class="hero-schematic reveal reveal-5">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hero-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00CC00" stop-opacity="0.85"/>
+          <stop offset="15%" stop-color="#006600" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.85"/>
+        </linearGradient>
+        <path id="hero-studio-blade" d="M -10,-145 C 30,-220 -180,-340 -40,-443 A 445 445 0 0 1 60,-441 C -100,-340 100,-220 25,-145 Z" />
+      </defs>
+
+      <g stroke="#1a2218" stroke-width="0.5" fill="none">
+        <line x1="0" y1="300" x2="600" y2="300" stroke-dasharray="3 6"/>
+        <line x1="300" y1="0" x2="300" y2="600" stroke-dasharray="3 6"/>
+        <circle cx="300" cy="300" r="280" stroke-dasharray="2 8"/>
+      </g>
+
+      <g transform="translate(300,300) scale(0.48)">
+        <circle r="460" fill="none" stroke="#00cc00" stroke-width="14" stroke-opacity="0.3"/>
+        <circle r="485" fill="none" stroke="#00cc00" stroke-width="24" stroke-opacity="0.5"/>
+        <path d="M -415,220 A 470 470 0 0 0 415,220" fill="none" stroke="#00CC00" stroke-width="20" stroke-linecap="round" stroke-opacity="0.6"/>
+      </g>
+
+      <g class="fan-rotor">
+        <g transform="translate(300,300) scale(0.48)" fill="url(#hero-blade-grad)" stroke="#00cc00" stroke-width="3" stroke-linejoin="round">
+          <use href="#hero-studio-blade" transform="rotate(0)"/>
+          <use href="#hero-studio-blade" transform="rotate(20)"/>
+          <use href="#hero-studio-blade" transform="rotate(40)"/>
+          <use href="#hero-studio-blade" transform="rotate(60)"/>
+          <use href="#hero-studio-blade" transform="rotate(80)"/>
+          <use href="#hero-studio-blade" transform="rotate(100)"/>
+          <use href="#hero-studio-blade" transform="rotate(120)"/>
+          <use href="#hero-studio-blade" transform="rotate(140)"/>
+          <use href="#hero-studio-blade" transform="rotate(160)"/>
+          <use href="#hero-studio-blade" transform="rotate(180)"/>
+          <use href="#hero-studio-blade" transform="rotate(200)"/>
+          <use href="#hero-studio-blade" transform="rotate(220)"/>
+          <use href="#hero-studio-blade" transform="rotate(240)"/>
+          <use href="#hero-studio-blade" transform="rotate(260)"/>
+          <use href="#hero-studio-blade" transform="rotate(280)"/>
+          <use href="#hero-studio-blade" transform="rotate(300)"/>
+          <use href="#hero-studio-blade" transform="rotate(320)"/>
+          <use href="#hero-studio-blade" transform="rotate(340)"/>
+        </g>
+
+        <g transform="translate(300,300) scale(0.48)">
+          <circle r="145" fill="#0a0a0a" stroke="none" />
+          <g transform="scale(1.15) rotate(15)">
+            <path d="M 0,0 C -22,0 -34,-22 -15,-37 C 11,-56 52,-30 49,11 C 45,52 -7,67 -41,45" fill="none" stroke="#D0D0D0" stroke-width="16" stroke-linecap="round"/>
+          </g>
+          <circle r="145" fill="none" stroke="#00cc00" stroke-width="22" stroke-opacity="0.8"/>
+        </g>
+      </g>
+
+      <g font-family="JetBrains Mono, monospace" font-size="9" fill="#5a655a">
+        <line x1="380" y1="100" x2="430" y2="60" stroke="#5a655a" stroke-width="0.5"/>
+        <line x1="430" y1="60" x2="510" y2="60" stroke="#5a655a" stroke-width="0.5"/>
+        <text x="436" y="54">18 BLADES</text>
+        <text x="436" y="68" fill="#3a423a">LEAP-1A</text>
+        <line x1="533" y1="300" x2="555" y2="300" stroke="#5a655a" stroke-width="0.5"/>
+        <text x="448" y="297">INLET LIP</text>
+        <line x1="250" y1="350" x2="180" y2="430" stroke="#5a655a" stroke-width="0.5"/>
+        <text x="80" y="445">SPINNER · ROT R/H</text>
+        <text x="40" y="50" font-size="8">ATA 71-00</text>
+        <text x="40" y="64" font-size="8" fill="#3a423a">POWER PLANT</text>
+        <text x="445" y="540" font-size="8" fill="#3a423a">VIEW LOOKING AFT</text>
+      </g>
+
+      <g stroke="#243024" stroke-width="1">
+        <line x1="20" y1="20" x2="40" y2="20"/><line x1="20" y1="20" x2="20" y2="40"/>
+        <line x1="580" y1="20" x2="560" y2="20"/><line x1="580" y1="20" x2="580" y2="40"/>
+        <line x1="20" y1="580" x2="40" y2="580"/><line x1="20" y1="580" x2="20" y2="560"/>
+        <line x1="580" y1="580" x2="560" y2="580"/><line x1="580" y1="580" x2="580" y2="560"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="block">
+  <div class="notam scroll-reveal">
+    <p><strong>For reference and training purposes only.</strong> A32F Tech is not approved
+    maintenance data. Every licensed engineer is trained and required to use only
+    approved data — AMM, MEL, MMEL, CDL, SRM, TSM, and company procedures — for
+    aircraft work. This app does not change that, and is not held out as a substitute
+    for it. Use it for revision, training, and as a reference companion between tasks.</p>
+  </div>
+</section>
+
+<section class="block" id="features">
+  <div class="section-label">What's inside</div>
+  <h2>Everything you'd keep in your back pocket, in one place.</h2>
+
+  <div class="features">
+
+    <div class="tier-divider">
+      <span class="tier-divider-label">Free</span>
+      <p>No subscription required</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">01 / ECAM</div>
+      <h3>ECAM Resets</h3>
+      <p>Browse reset procedures for free. Pro unlocks full search, NOGO fault
+      flagging, a dedicated no-reset-available list, bookmarks, reset timers,
+      tappable CB panel images, and direct links to the relevant MMEL entry.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">02 / GLOSSARY</div>
+      <h3>Acronyms</h3>
+      <p>Aviation and Airbus-specific acronym definitions, searchable. The one
+      you can never remember when someone's watching.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">03 / MCDU</div>
+      <h3>Alpha Callups</h3>
+      <p>FDIU and SDAC parameter monitoring codes — the full list of parameters
+      you can bring up on the MCDU, with the relevant information for each.
+      Saves you remembering the exact sequence when you need it in a hurry.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">04 / ELEC</div>
+      <h3>CB Locations</h3>
+      <p>Full list of circuit breakers with FIN and physical location. Each entry
+      links to a tappable image of the relevant VU panel so you can see exactly
+      where to look.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">05 / TOOLS</div>
+      <h3>Converters</h3>
+      <p>Pressure, torque, temperature, and weight converters plus a fuel uplift
+      calculator. The ones you need on the job without digging through a
+      performance manual.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">06 / DISPATCH</div>
+      <h3>MEL Calculator</h3>
+      <p>Shows the current expiry date for Cat B, C, and D automatically — no
+      input needed. Cat A is the only one you enter manually, since the time
+      limit is operator-defined. No calendar counting, no mental arithmetic.</p>
+    </div>
+
+    <div class="tier-divider">
+      <span class="tier-divider-label">Pro</span>
+      <p>€19.99 / year &nbsp;·&nbsp; €2.99 / month &nbsp;·&nbsp; 14-day free trial on annual plan</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">07 / EXTERIOR</div>
+      <h3>Antennas &amp; Lighting</h3>
+      <p>Browseable images for locating every antenna, probe, sensor, and external
+      light on the aircraft. Search by name and the result isolates that item —
+      everything else drops away.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">08 / AVIONICS</div>
+      <h3>Avionics Computers</h3>
+      <p>Interactive SVG diagrams of the 80VU, 90VU, 105/106/109VU, and Aft
+      Cargo computer bays. Tap any component to highlight it on screen — the
+      fastest way to locate an avionic computer on the aircraft.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">09 / DISPATCH</div>
+      <h3>MCDL Limits</h3>
+      <p>Dispatch limits for missing external parts with MCDL reference. Know
+      what can go and what the requirement is before the crew asks.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">10 / SYNC</div>
+      <h3>Data Sync</h3>
+      <p>Pull the latest procedure and reference data directly to the app without
+      waiting for a store update. One-way and outbound only — no data ever leaves
+      your device. Can be disabled in settings at any time.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">11 / AMM</div>
+      <h3>Deactivation Tasks</h3>
+      <p>AMM task references for system deactivations with direct links to the
+      associated MMEL entry alongside. Everything in one place for deferred defect
+      management.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">12 / FLUIDS</div>
+      <h3>Leakage Rates</h3>
+      <p>Acceptable leakage limits grouped by system for quick on-the-job
+      referencing. The kind of thing that lives on a scrap of paper in most
+      toolboxes.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">13 / MMEL</div>
+      <h3>MMEL Reference</h3>
+      <p>Full Master Minimum Equipment List, ATA grouped and colour-coded by
+      category — Cat A through D. Tap any deferred defect in an ECAM reset and
+      jump straight to the relevant MMEL entry. Everything you need for a deferred
+      defect in one place.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">14 / DOCS</div>
+      <h3>My Documents</h3>
+      <p>Import and store your own PDFs and manuals directly in the app. Native
+      PDF rendering, swipe between images, and sort by date, name, or type.
+      Swipe any document to share it directly to any app on your device or delete
+      it. Document titles are included in the universal library search. Backed up
+      and restored separately from your Parts and Refs library.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">15 / NOTES</div>
+      <h3>My Notepad</h3>
+      <p>A freeform scratchpad that lives in the app. Jot down shift notes,
+      snags, or anything you need to remember. Full-screen editor, auto-saves
+      on close, swipe to delete. Included in backup and restore.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">16 / REFS</div>
+      <h3>My References</h3>
+      <p>A single fully editable reference library, pre-populated with standard
+      AMM maintenance task references and searchable from the first launch. Add
+      your own entries, edit existing ones, or delete what you don't need.
+      Filter by type: AMM, TSM, SRM, or GEN.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">17 / STRUCT</div>
+      <h3>Panel Fastener Limits</h3>
+      <p>Search any panel number and get its missing-fastener limits, AMM reference,
+      and corrective action. Browse diagrams cover the belly, horizontal stabiliser,
+      and vertical stabiliser — tap any panel on the diagram and it pulls up the
+      limits directly.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">18 / PARTS</div>
+      <h3>Parts Catalogue</h3>
+      <p>Build your own catalogue of go-to and hard-to-find part numbers. Each
+      entry supports IPC/CMM references, notes, and a photo of the part. Tag by
+      fleet type — including multi-fleet tagging for parts that span variants.
+      Back up and restore your catalogue, or share it with another engineer
+      instantly.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">19 / STRUCT</div>
+      <h3>Structures</h3>
+      <p>Access panel, frame, and stringer reference across A320, A321, and A321
+      XLR. Fuselage panel diagrams include horizontal and vertical stabiliser
+      surfaces with SVG highlighting — tap any panel ID to identify it on
+      screen.</p>
+    </div>
+
+    <div class="feature scroll-reveal">
+      <div class="feature-num">20 / AVIONICS</div>
+      <h3>VU Panels</h3>
+      <p>Full overview and bay-by-bay reference for every VU panel on the aircraft.
+      Navigate from the aircraft overview to any individual panel and see exactly
+      what's installed — from 6VU to 126VU.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="block">
+  <div class="specs scroll-reveal">
+    <div class="spec">
+      <span class="spec-value">0</span>
+      <span class="spec-label">Accounts required</span>
+    </div>
+    <div class="spec">
+      <span class="spec-value">0</span>
+      <span class="spec-label">Trackers / analytics</span>
+    </div>
+    <div class="spec">
+      <span class="spec-value">100%</span>
+      <span class="spec-label">Offline capable</span>
+    </div>
+    <div class="spec">
+      <span class="spec-value">3</span>
+      <span class="spec-label">Variants supported</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="builder scroll-reveal">
+    <div class="builder-text">
+      <div class="section-label">Built by</div>
+      <h2 style="margin-bottom: 1.75rem;">The little black book. Digital.</h2>
+      <p>Every experienced engineer had one — a battered notebook or a dog-eared
+      photocopy stuffed in their bag. ECAM reset sequences. That obscure part number
+      you'd spend half a shift hunting down. A torque value you memorised once and
+      couldn't find again. A reference that isn't in the index but you know exists
+      somewhere in the AMM.</p>
+      <p>That's what this is. The stuff the old boys kept in their back pocket,
+      built into an app by someone who spent long enough not having it.</p>
+      <div class="callsign">— Built between shifts. —</div>
+    </div>
+    <div>
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px;">
+        <rect x="40" y="60" width="320" height="280" rx="6"
+              fill="#0f0f0f" stroke="#243024" stroke-width="1.5"/>
+        <rect x="48" y="68" width="304" height="264" rx="4"
+              fill="none" stroke="#1a2218" stroke-width="0.5"/>
+        <g fill="#1a2218" stroke="#243024" stroke-width="0.5">
+          <circle cx="56" cy="76" r="3"/>
+          <circle cx="344" cy="76" r="3"/>
+          <circle cx="56" cy="324" r="3"/>
+          <circle cx="344" cy="324" r="3"/>
+        </g>
+        <line x1="60" y1="100" x2="340" y2="100" stroke="#243024" stroke-width="0.5"/>
+        <text x="200" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace"
+              font-size="10" fill="#5a655a" letter-spacing="3">DATA PLATE</text>
+        <g font-family="JetBrains Mono, monospace" font-size="10">
+          <text x="60" y="128" fill="#5a655a" letter-spacing="1">PUBLISHER</text>
+          <text x="340" y="128" text-anchor="end" fill="#d8e0d6">TRP Engineering</text>
+          <line x1="60" y1="138" x2="340" y2="138" stroke="#1a2218" stroke-width="0.5"/>
+          <text x="60" y="160" fill="#5a655a" letter-spacing="1">ORIGIN</text>
+          <text x="340" y="160" text-anchor="end" fill="#d8e0d6">IRELAND</text>
+          <line x1="60" y1="170" x2="340" y2="170" stroke="#1a2218" stroke-width="0.5"/>
+          <text x="60" y="192" fill="#5a655a" letter-spacing="1">TYPE</text>
+          <text x="340" y="192" text-anchor="end" fill="#d8e0d6">REFERENCE COMPANION</text>
+          <line x1="60" y1="202" x2="340" y2="202" stroke="#1a2218" stroke-width="0.5"/>
+          <text x="60" y="224" fill="#5a655a" letter-spacing="1">PLATFORM</text>
+          <text x="340" y="224" text-anchor="end" fill="#d8e0d6">A320 · A321 · XLR</text>
+          <line x1="60" y1="234" x2="340" y2="234" stroke="#1a2218" stroke-width="0.5"/>
+          <text x="60" y="256" fill="#5a655a" letter-spacing="1">EST</text>
+          <text x="340" y="256" text-anchor="end" fill="#d8e0d6">2026</text>
+          <line x1="60" y1="266" x2="340" y2="266" stroke="#1a2218" stroke-width="0.5"/>
+          <text x="60" y="288" fill="#5a655a" letter-spacing="1">STATUS</text>
+          <text x="335" y="288" text-anchor="end" fill="#00cc00">OPERATIONAL</text>
+          <circle cx="345" cy="285" r="3" fill="#00cc00">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <text x="200" y="320" text-anchor="middle" font-family="JetBrains Mono, monospace"
+              font-size="7" fill="#3a423a" letter-spacing="2">NOT AFFILIATED WITH AIRBUS</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="/a32ftech">A32F&nbsp;TECH</a>
+      <p>An independent reference companion for licensed engineers working on the
+      Airbus A320 family. Built in Ireland.</p>
+    </div>
+    <div class="footer-col">
+      <h4>App</h4>
+      <ul>
+        <li><a href="/a32ftech">Overview</a></li>
+        <li><a href="#" style="opacity:0.5; cursor:default;" aria-disabled="true">Google Play — soon</a></li>
+        <li><a href="#" style="opacity:0.5; cursor:default;" aria-disabled="true">App Store — soon</a></li>
+        <li><a href="mailto:contact@trpengineering.ie">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/a32ftech/privacy">Privacy Policy</a></li>
+        <li><a href="/a32ftech/terms">Terms of Use</a></li>
+        <li><a href="mailto:contact@trpengineering.ie">Data Requests</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TRP Engineering · Registered in Ireland</span>
+    <span>NOT AFFILIATED WITH AIRBUS · ALL TRADEMARKS BELONG TO THEIR OWNERS</span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+});
+</script>
+</body>
 </html>
