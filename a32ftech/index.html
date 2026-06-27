@@ -39,7 +39,6 @@
   --display: 'Fraunces', Georgia, serif;
   --body: 'Inter', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
-  --good: #6dbb8a;
   --warn: #e8c468;
 }
 
@@ -464,15 +463,6 @@ h2 {
   margin-left: 0.4rem;
   vertical-align: middle;
 }
-.cta-subtext {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-top: 0.75rem;
-  width: 100%;
-}
 
 /* ===== FOOTER ===== */
 footer {
@@ -557,6 +547,7 @@ footer {
 .scroll-reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
 }
 </style>
 </head>
